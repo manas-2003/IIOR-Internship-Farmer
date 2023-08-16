@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Farm implements/assets{% endblock %}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body{
+            background: rgb(17,7,12);
+            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+        }
+        .fixed-header, .fixed-footer{
+            width: 100%;
+            position: fixed;
+            background: rgb(35, 68, 101);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+            font-size: larger;
+            display: inline-block;
+        }
+        .fixed-header{
+            top: 0;
+        }
+        div.fixed-header{
+            height: 120px;
+        }
+        .fixed-footer{
+            bottom: 0;
+        }
+        .container{
+            width: 80%;
+            margin: 0 auto; /* Center the DIV horizontally */
+
+        }
+        .icar{
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            margin-right: 1000px;
+            margin-top: -100px;
+            margin-bottom: 15px;
+        }
+        img.iior{
+            height: 100px;
+            width: 100px;
+            top: 1.5%;
+            left: 80%;
+            position: fixed;
+            margin: auto;
+        }
+
+        #rec-box{
+            top: 50%;
+            width: 880px;
+            height: 410px;
+            border:30px;
+            margin: 0 auto;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        form.fixed-form{
+            margin-top: -180px;
+        }
+
+        .table-head{
+            /* top: 40%; */
+            border:30px;
+            margin: 0 auto;
+            margin-top: 280px;
+            margin-left: 290px;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            /* cursor: pointer; */
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-85:before {
+            content: "";
+            /* background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+            ); */
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing-button-85 {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgb(255, 255, 255);
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        #label{
+            margin-top: -15px;
+        }
+        .label-text{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            margin-left: 250px;
+            font-weight: bolder;
+        }
+        /* .label-text-hired{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            margin-left: 225px;
+            font-weight: bolder;
+        } */
+        .label-text-implement{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            margin-left: 200px;
+            font-weight: bolder;
+        }
+        .input-text1{
+            height: 24px;
+            width: 230px;
+            border-radius: 10px;
+            margin-left: 165px;
+            font: 15px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text2{
+            height: 24px;
+            width: 230px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-left: 135px;
+            font: 15px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        /* .input-text3{
+            height: 24px;
+            width: 230px;
+            border-radius: 10px;
+            margin-left: 70px;
+            font: 15px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        } */
+
+        .next-btn{
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #input{
+            border: 3px solid;
+            border-radius: 10px;
+            height: 23px;
+            width: 220px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        #input:hover{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        #input:focus{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        .caution{
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 20px;
+            color: rgb(255, 0, 0);
+        }
+
+        .caution-text{
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+
+        .button-33 {
+            background-color: #90e860;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+            color: green;
+            cursor: pointer;
+            display: inline-block;
+            font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+            padding: 7px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 250ms;
+            border: 0;
+            font-size: 24px;
+            width: 100px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-33:hover {
+            box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+        .delete{
+            margin-left: -10px;
+        }
+
+
+        .add_form_field{
+            font-family: "Copperplate";
+            font-weight: bolder;
+            border-radius: 10px;
+            height: 35px;
+            margin-left: 235px;
+            background-color: #37ff00;
+        }
+        .add_form_field:hover{
+            box-shadow: rgba(9, 118, 241, 0.987) 0px 0px 0px 3px;
+            cursor: pointer;
+            transform: translate3d(0, 2px, 0);
+            background-color: rgb(234, 8, 255);
+        }
+
+        /* nav a{
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 25px;
+
+        } */
+        /* top: 50%;
+        left: 50%;
+        position: fixed;
+        opacity:0.09;
+        margin: auto; */
+    </style>
+</head>
+<body>
+
+    <div class="fixed-header">
+        <div class="container">
+            <nav>
+                <p>ICAR - INDIAN INSTITUTE OF OILSEEDS RESEARCH</p>
+                <p>Schedule for collecting the FPO farmers details</p>
+            </nav>
+        </div>
+        <img src="https://icar.org.in/files/icarlogo.png" alt="" class="icar">
+        <img src="https://icar-iior.org.in/sites/default/files/iior-logo-157x227.png" alt="" class="iior">
+    </div>
+    <br><br><br>
+    <form action="farm" method="post" class="fixed-form">
+        <h3 class="table-head">&#8548;.  Farm implements/assets </h3>
+        <div id="rec-box" class="button-85" role="button">
+            <br>
+            <br>
+            <div id="label">
+                <label for="implement-asset" class="label-text-implement">Implement/asset: </label>
+                <label for="owned" class="label-text">Source: </label>
+                <!-- <label for="hired" class="label-text-hired">: </label> -->
+            </div>
+            <br>
+            <!-- <input type="text" id="input" class="input-text1">
+            <input type="text" id="input" class="input-text2">
+            <input type="text" id="input" class="input-text3"> -->
+
+            <div class="container1">
+                <button class="add_form_field">Add New Field &nbsp;
+                    <span style="font-size:16px; font-weight:bold;">+ </span>
+                </button>
+                <br><br><br>
+                <div>
+                    <input type="text" name="mytext1[]" id="input" class="input-text1" required>
+                    <!-- <input type="text" name="mytext2[]" id="input" class="input-text2"> -->
+                    <select name="mytext2[]" id="input" type="text" class="input-text2" required>
+                        <option value="">Select Owned or Hired</option>
+                        <option value="Owned">Owned</option>
+                        <option value="Hired">Hired</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- <br>
+            <br>
+            <input type="text" id="input" class="input-text1">
+            <input type="text" id="input" class="input-text2">
+            <input type="text" id="input" class="input-text3">
+            <br>
+            <br>
+            <input type="text" id="input" class="input-text1">
+            <input type="text" id="input" class="input-text2">
+            <input type="text" id="input" class="input-text3">
+            <br>
+            <br>
+            <input type="text" id="input" class="input-text1">
+            <input type="text" id="input" class="input-text2">
+            <input type="text" id="input" class="input-text3">
+            <br>
+            <br>
+            <input type="text" id="input" class="input-text1">
+            <input type="text" id="input" class="input-text2">
+            <input type="text" id="input" class="input-text3">
+            <br>
+            <br>
+            <input type="text" id="input" class="input-text1">
+            <input type="text" id="input" class="input-text2">
+            <input type="text" id="input" class="input-text3"> -->
+        </div>
+
+        <div class="caution">
+            <label for="caution" class="caution-text">*Check the fields again before going to next page*</label>
+        </div>
+        <div class="next-btn">
+            <a><button class="button-33" role="button">Next</button></a>
+        </div>
+    </form>
+
+    <div class="fixed-footer">
+        <div class="container">Copyright &copy; ICAR</div>
+    </div>
+
+
+    <script>
+
+$(document).ready(function() {
+            var max_fields = 6;
+            var wrapper = $(".container1");
+            var add_button = $(".add_form_field");
+
+            var x = 1;
+            $(add_button).click(function(e) {
+                e.preventDefault();
+                if (x < max_fields) {
+                    x++;
+                    $(wrapper).append('<div> <br><a href="#" class="delete">&#128465;</a><input type="text" name="mytext1[]" id="input" class="input-text1" required/><select type="text" name="mytext2[]" id="input" class="input-text2" required><option value="">Select Owned or Hired</option><option value="Owned">Owned</option><option value="Hired">Hired</option></select></div>'); //add input box
+                } else {
+                    alert('You Reached the limits')
+                }
+            });
+
+            $(wrapper).on("click", ".delete", function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+            })
+        });
+
+
+    </script>
+</body>
+</html>

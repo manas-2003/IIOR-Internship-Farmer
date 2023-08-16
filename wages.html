@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Labour Utilization{% endblock %}</title>
+
+    <style>
+        body{
+            background: rgb(17,7,12);
+            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+        }
+        .fixed-header, .fixed-footer{
+            width: 100%;
+            position: fixed;
+            background: rgb(35, 68, 101);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+            font-size: larger;
+            display: inline-block;
+        }
+        .fixed-header{
+            top: 0;
+        }
+        div.fixed-header{
+            height: 120px;
+        }
+        .fixed-footer{
+            bottom: 0;
+        }
+        .container{
+            width: 80%;
+            margin: 0 auto; /* Center the DIV horizontally */
+
+        }
+        .icar{
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            margin-right: 1000px;
+            margin-top: -100px;
+            margin-bottom: 15px;
+        }
+        img.iior{
+            height: 100px;
+            width: 100px;
+            top: 1.5%;
+            left: 80%;
+            position: fixed;
+            margin: auto;
+        }
+
+        #rec-box{
+            top: 50%;
+            width: 1080px;
+            height: 250px;
+            border:30px;
+            margin: 0 auto;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        form.fixed-form{
+            margin-top: -110px;
+        }
+
+        .table-head{
+            /* top: 40%; */
+            border:30px;
+            margin: 0 auto;
+            margin-top: 260px;
+            margin-left: 190px;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            /* cursor: pointer; */
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-85:before {
+            content: "";
+            /* background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+            ); */
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing-button-85 {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgb(255, 255, 255);
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        .label-text-head1{
+            color: rgb(0, 0, 0);
+            font: 25px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 100px;
+            margin-bottom: -80px;
+        }
+        .label-text-head2{
+            color: rgb(0, 0, 0);
+            font: 25px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 270px;
+        }
+        .label-text-male{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 60px;
+            margin-bottom: -80px;
+        }
+        .label-text-female{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 120px;
+            margin-bottom: -80px;
+        }
+        .label-text-cattle-pair{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 140px;
+            margin-bottom: -80px;
+        }
+        .label-text-tractor{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 60px;
+            margin-bottom: -80px;
+        }
+        .label-text-implements{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 60px;
+            margin-bottom: -80px;
+        }
+        .label-text-spray-equipment{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 50px;
+            margin-bottom: -80px;
+        }
+        .input-text1{
+            height: 44px;
+            width: 110px;
+            border-radius: 10px;
+            margin-left: 32px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text2{
+            height: 44px;
+            width: 110px;
+            border-radius: 10px;
+            margin-left: 83px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text3{
+            height: 44px;
+            width: 110px;
+            border-radius: 10px;
+            margin-left: 79px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text4{
+            height: 44px;
+            width: 110px;
+            border-radius: 10px;
+            margin-left: 33px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text5{
+            height: 44px;
+            width: 110px;
+            border-radius: 10px;
+            margin-left: 30px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text6{
+            height: 44px;
+            width: 110px;
+            border-radius: 10px;
+            margin-left: 73px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+
+        .next-btn{
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #input{
+            border: 3px solid;
+            border-radius: 10px;
+            /* height: 20px;
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        #input:hover{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        #input:focus{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        .caution{
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 20px;
+            color: rgb(255, 0, 0);
+        }
+
+        .caution-text{
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+        .line{
+            margin-top: 20px;
+            color: rgb(21, 227, 58);
+            border-radius: 20px;
+            opacity: 0.7;
+        }
+
+
+        .button-33 {
+            background-color: #90e860;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+            color: green;
+            cursor: pointer;
+            display: inline-block;
+            font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+            padding: 7px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 250ms;
+            border: 0;
+            font-size: 24px;
+            width: 100px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-33:hover {
+            box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+        .vl{
+            border-left: 7px solid rgb(255, 191, 0);
+            height: 265px;
+            position: absolute;
+            left: 35%;
+            margin-left: -3px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+
+        /* nav a{
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 25px;
+
+        } */
+        /* top: 50%;
+        left: 50%;
+        position: fixed;
+        opacity:0.09;
+        margin: auto; */
+    </style>
+</head>
+<body>
+
+    <div class="fixed-header">
+        <div class="container">
+            <nav>
+                <p>ICAR - INDIAN INSTITUTE OF OILSEEDS RESEARCH</p>
+                <p>Schedule for collecting the FPO farmers details</p>
+            </nav>
+        </div>
+        <img src="https://icar.org.in/files/icarlogo.png" alt="" class="icar">
+        <img src="https://icar-iior.org.in/sites/default/files/iior-logo-157x227.png" alt="" class="iior">
+    </div>
+    <br><br><br>
+    <form action="labour" method="post" class="fixed-form">
+        <h3 class="table-head">&#8549;.  Labour Utilization </h3>
+        <div id="rec-box" class="button-85" role="button">
+            <div class="vl"></div>
+            <br>
+            <br>
+            <label for="wage-rate-rs" class="label-text-head1">Wage Rate(Rs.): </label>
+            <label for="hiring-charges-rs" class="label-text-head2">Hiring Charges(Rs.): </label>
+            <hr color="orange" size="6" width="100%" class="line">
+            <br>
+            <label for="male" class="label-text-male">Male: </label>
+            <label for="female" class="label-text-female">Female: </label>
+            <label for="cattle-pair" class="label-text-cattle-pair">Cattle Pair: </label>
+            <label for="tractor" class="label-text-tractor">Tractor: </label>
+            <label for="implements" class="label-text-implements">Implements: </label>
+            <label for="spray-equipment" class="label-text-spray-equipment">Spray Equipment: </label>
+            <br>
+            <br>
+            <input type="number" step="any" id="input" class="input-text1" name="male">
+            <input type="number" step="any" id="input" class="input-text2" name="female">
+            <input type="number" step="any" id="input" class="input-text3" name="cattle">
+            <input type="number" step="any" id="input" class="input-text4" name="tractor">
+            <input type="number" step="any" id="input" class="input-text5" name="implements">
+            <input type="number" step="any" id="input" class="input-text6" name="spray">
+        </div>
+
+        <div class="caution">
+            <label for="caution" class="caution-text">*Check the fields again before going to next page*</label>
+        </div>
+        <div class="next-btn">
+            <a><button class="button-33" role="button">Next</button></a>
+        </div>
+    </form>
+
+    <div class="fixed-footer">
+        <div class="container">Copyright &copy; ICAR</div>
+    </div>
+</body>
+</html>

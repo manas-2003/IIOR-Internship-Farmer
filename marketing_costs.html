@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Input Costs{% endblock %}</title>
+
+    <style>
+        body{
+            background: rgb(17,7,12);
+            /* background: linear-gradient(90deg, rgba(17,7,12,1) 0%, rgba(9,235,202,1) 0%, rgba(183,0,255,1) 57%, rgba(31,174,59,0.3648809865743172) 100%, rgba(44,38,58,1) 100%, rgba(44,19,30,1) 100%); */
+            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+        }
+
+
+        .fixed-header, .fixed-footer{
+            width: 100%;
+            position: fixed;
+            background: rgb(35, 68, 101);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+            font-size: larger;
+            display: inline-block;
+        }
+        .fixed-header{
+            top: 0;
+        }
+        div.fixed-header{
+            height: 120px;
+        }
+        .fixed-footer{
+            bottom: 0;
+        }
+        .container{
+            width: 80%;
+            margin: 0 auto; /* Center the DIV horizontally */
+
+        }
+        .icar{
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            margin-right: 1000px;
+            margin-top: -100px;
+            margin-bottom: 15px;
+        }
+        img.iior{
+            height: 100px;
+            width: 100px;
+            top: 1.5%;
+            left: 80%;
+            position: fixed;
+            margin: auto;
+        }
+
+        .container{
+            background-color: aliceblue;
+            /* text-align: center; */
+            height: 940px;
+            width: 1000px;
+            margin: auto 0;
+            margin-top: 100px;
+            margin-left: 260px;
+            border-radius: 20px;
+        }
+        .contain{
+            width: 1200px;
+            height: 900px;
+        }
+
+        .headers{
+            margin: auto 0;
+            margin-left: 50px;
+            font-size: 25px;
+            /* margin-bottom: -20px; */
+        }
+
+        .heading{
+            margin: auto 0;
+            margin-top: 70px;
+            margin-left: 290px;
+            margin-bottom: -70px;
+            font-size: 30px;
+            font-weight: bolder;
+            color: rgb(0, 0, 0);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            /* font-family: "Copperplate Gothic Light"; */
+        }
+
+        #label{
+            font-size: larger;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+
+        .next_button{
+            background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+            margin: auto 0;
+            margin-left: 250px;
+            margin-top: 40px;
+            width: 540px;
+            height: 50px;
+            border-radius: 10px;
+            font-size: 40px;
+            font-weight: bolder;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+        .next_button:hover{
+            background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB,  #6fba82);
+            box-shadow: #07b39b;
+            border: 2px solid #d000eb;
+            cursor: pointer;
+            height: 55px;
+            /* transform: translateY("100deg"); */
+        }
+
+        .input{
+            border: 3px solid;
+            border-radius: 10px;
+            height: 35px;
+            width: 230px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        .input:hover{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        .input:focus{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        .header2{
+            margin-left: 190px;
+        }
+
+        .header3{
+            margin-left: 150px;
+        }
+        .bagging_label{
+            margin-left: 50px;
+        }
+        .transportation_label{
+            margin-left: 50px;
+        }
+        .hamali_label{
+            margin-left: 50px;
+        }
+        .market_label{
+            margin-left: 50px;
+        }
+        .weighing_label{
+            margin-left: 50px;
+        }
+        .commission_label{
+            margin-left: 50px;
+        }
+        .others_label{
+            margin-left: 50px;
+        }
+        #r11{
+            margin-left: 230px;
+        }
+        #r12{
+            margin-left: 150px;
+        }
+        #r13{
+            margin-left: 53px;
+        }
+        #r14{
+            margin-left: 203px;
+        }
+        #r15{
+            margin-left: 130px;
+        }
+        #r16{
+            margin-left: 70px;
+        }
+        #r17{
+            margin-left: 245px;
+        }
+        #baggingRemarks{
+            margin-left: 100px;
+        }
+        #transportationRemarks{
+            margin-left: 100px;
+        }
+        #hamaliRemarks{
+            margin-left: 100px;
+        }
+        #marketRemarks{
+            margin-left: 100px;
+        }
+        #weighingRemarks{
+            margin-left: 100px;
+        }
+        #commissionRemarks{
+            margin-left: 100px;
+        }
+        #othersRemarks{
+            margin-left: 100px;
+        }
+
+        .add_btn{
+            margin-left: 450px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+            width: 80px;
+            height: 40px;
+            font-weight: bolder;
+            font-size: larger;
+            border-radius: 10px;
+            background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+        }
+        .add_btn:hover{
+            background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB,  #6fba82);
+            box-shadow: #07b39b;
+            border: 2px solid #d000eb;
+            cursor: pointer;
+            height: 45px;
+            /* transform: translateY("100deg"); */
+            /* transform: rotateX('10deg'); */
+        }
+
+        .total_label{
+            margin-left: 50px;
+        }
+
+        #output{
+            margin-left: 85px;
+        }
+        .input1{
+            border: 3px solid;
+            border-radius: 10px;
+            height: 35px;
+            width: 70px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        .input1:hover{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        .input1:focus{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="fixed-header">
+        <div class="">
+            <nav>
+                <p>ICAR - INDIAN INSTITUTE OF OILSEEDS RESEARCH</p>
+                <p>Schedule for collecting the FPO farmers details</p>
+            </nav>
+        </div>
+        <img src="https://icar.org.in/files/icarlogo.png" alt="" class="icar">
+        <img src="https://icar-iior.org.in/sites/default/files/iior-logo-157x227.png" alt="" class="iior">
+    </div>
+    <br><br><br><br><br>
+
+    <div class="heading">
+        <label for="">&#8552; b. Marketing Costs</label>
+        <input type="text" id="member" name="member1" class="input1" value="{{x1}}"><br />
+    </div>
+    <form action="marketing_costs" method="post">
+        <div class="contain">
+            <div class="container">
+                <br>
+                <br>
+                <div class="headers">
+                    <!-- <label for="Item" class="header1" id="label">Item</label>
+                    <label for="Quantity" class="header2" id="label">Quantity</label>
+                    <label for="UnitPrice" class="header3" id="label">Unit Price (Rs.)</label>
+                    <label for="SourceOfInput" class="header4" id="label">Source Of Input</label>
+                    <label for="NameAndPlace" class="header5" id="label">Name & Place (Address)</label> -->
+                    <label for="particulars" class="header1" id="label">Particulars</label>
+                    <label for="costInRupees" class="header2" id="label">Cost in Rupees/quintal</label>
+                    <label for="remarks" class="header3" id="label">Remarks</label>
+                </div>
+                <br>
+                <br>
+                <div class="bagging">
+                    <label for="bagging" id="label" class="bagging_label">Bagging: </label>
+                    <input type="number" step="any" class="input" id="r11" placeholder="Enter Cost in Ruppes" name="bc">
+                    <input type="text" class="input" id="baggingRemarks" placeholder="Enter Remarks" name="br">
+                </div>
+                <br>
+                <br>
+                <div class="transportation">
+                    <label for="transportation" class="transportation_label" id="label">Transportation: </label>
+                    <input type="number" step="any" class="input" id="r12" placeholder="Enter Cost in Rupees" name="tc">
+                    <input type="text" class="input" id="transportationRemarks" placeholder="Enter Remarks" name="tr">
+                </div>
+                <br><br>
+                <div class="hamali">
+                    <label for="hamali" class="hamali_label" id="label">Hamali(Labour) expenses: </label>
+                    <input type="number" step="any" class="input" id="r13" placeholder="Enter Cost in Rupees" name="hc">
+                    <input type="text" class="input" id="hamaliRemarks" placeholder="Enter Remarks" name="hr">
+                </div>
+                <br><br>
+                <div class="market">
+                    <label for="market" class="market_label" id="label">Market fee: </label>
+                    <input type="number" step="any" class="input" id="r14" placeholder="Enter Cost in Rupees" name="mc">
+                    <input type="text" class="input" id="marketRemarks" placeholder="Enter Remarks" name="mr">
+                </div>
+                <br><br>
+                <div class="weighing">
+                    <label for="weighing" class="weighing_label" id="label">Weighing charges: </label>
+                    <input type="number" step="any" class="input" id="r15" placeholder="Enter Cost in Rupees" name="wc">
+                    <input type="text" class="input" id="weighingRemarks" placeholder="Enter Remarks" name="wr">
+                </div>
+                <br><br>
+                <div class="commission">
+                    <label for="commission" class="commission_label" id="label">Commission agent's fee: </label>
+                    <input type="number" step="any" class="input" id="r16" placeholder="Enter Cost in Rupees" name="cc">
+                    <input type="text" class="input" id="commissionRemarks" placeholder="Enter Remarks" name="cr">
+                </div>
+                <br><br>
+                <div class="others">
+                    <label for="others" class="others_label" id="label">Others: </label>
+                    <input type="number" step="any" class="input" id="r17" placeholder="Enter Cost in Rupees" name="oc">
+                    <input type="text" class="input"  id="othersRemarks" placeholder="Enter Remarks" name="or">
+                </div>
+                <br><br>
+                <div class="add">
+                    <button type="button" class="add_btn" onclick="functionTotal()">ADD</button>
+                </div>
+                <br><br>
+                <div class="total">
+                    <label for="total" class="total_label" id="label">Total Marketing Cost: </label>
+                    <input type="text" class="input" id="output" placeholder="Press ADD" name="total">
+                </div>
+                <br><br>
+                <div class="submit_button">
+                    <div class="submit">
+                        <button type="submit" class="next_button" id="next">Next</button>
+                    </div>
+                </div>
+
+
+                <!-- <div class="submit_button">
+                    <div class="submit">
+                        <button type="submit" class="next_button" id="next">Next</button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br><br><br>
+
+
+    <script>
+        function functionTotal(){
+            // var n1 = document.getElementById("baggginCost").value;
+            // var n2 = document.getElementById("transportationCost").value;
+            // var n3 = document.getElementById("hamaliCost").value;
+            // var n4 = document.getElementById("marketCost").value;
+            // var n5 = document.getElementById("weighingCost").value;
+            // var n6 = document.getElementById("commissionCost").value;
+            // var n7 = document.getElementById("othersCost").value;
+            // var result;
+            // result = Number(n1) + Number(n2) + Number(n3) + Number(n4) + Number(n5) + Number(n6) + Number(n7);
+
+            // document.getElementById("total").value = result;
+
+            var n1 = document.getElementById("r11").value;
+            var n2 = document.getElementById("r12").value;
+            var n3 = document.getElementById("r13").value;
+            var n4 = document.getElementById("r14").value;
+            var n5 = document.getElementById("r15").value;
+            var n6 = document.getElementById("r16").value;
+            var n7 = document.getElementById("r17").value;
+            var Total;
+            Total = Number(n1) + Number(n2) +  Number(n3) +  Number(n4) +  Number(n5) +  Number(n6) +  Number(n7);
+            document.getElementById("output").value = Total;
+        }
+    </script>
+</body>
+</html>

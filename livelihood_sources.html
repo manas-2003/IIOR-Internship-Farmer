@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Livelihood Sources{% endblock %}</title>
+    
+    <style>
+        body{
+            background: rgb(17,7,12);
+            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+            width: 2400px;
+        }
+        .fixed-header, .fixed-footer{
+            width: 100%;
+            position: fixed;        
+            background: rgb(35, 68, 101);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+            font-size: larger;
+            display: inline-block;
+        }
+        .fixed-header{
+            top: 0;
+        }
+        div.fixed-header{
+            height: 120px;
+        }
+        .fixed-footer{
+            bottom: 0;
+        }
+        .container{
+            width: 80%;
+            margin: 0 auto; /* Center the DIV horizontally */
+            
+        }
+        .icar{
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            margin-right: 1000px;
+            margin-top: -100px;
+            margin-bottom: 15px;
+        }
+        img.iior{
+            height: 100px;
+            width: 100px;
+            top: 1.5%;
+            left: 80%;
+            position: fixed;
+            margin: auto;
+        }
+
+        #rec-box{
+            top: 50%;
+            width: 2000px;
+            height: 400px;
+            border:30px;
+            margin: 0 auto;
+            margin-top: 30px;
+            margin-left: 5vmax;
+            border-radius: 10px;
+        }
+
+        form.fixed-form{
+            margin-top: -110px;
+        }
+
+        .table-head{
+            /* top: 40%; */
+            border:30px;
+            margin: 0 auto;
+            margin-top: 300px;
+            margin-left: 8vw;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            font-size: 20px;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            /* cursor: pointer; */
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-85:before {
+            content: "";
+            /* background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+            ); */
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing-button-85 {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgb(255, 255, 255);
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        .label-text{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            /* margin-left: 30px;
+            margin-bottom: -80px; */
+            font-weight: bolder;
+            margin-left: 105px;
+
+        }
+        .label-text1{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            margin-left: 408px;
+            font-weight: bolder;
+        }
+
+        .next-btn{
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .input{
+            background-color: rgb(255, 255, 255);
+            border: 3px solid #000000;
+            border-radius: 8px;
+            box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+            box-sizing: border-box;
+            color: #0f1111;
+            /* cursor: pointer; */
+            display: inline-block;
+            /* font-family: "Amazon Ember",sans-serif; */
+            /* font-size: 13px; */
+            line-height: 29px;
+            padding: 0 10px 0 11px;
+            position: relative;
+            /* text-align: center; */
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            font-size: 12px;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            width: 130px;
+            height: 30px;
+        }
+
+        .input:hover{
+            background-color: #f7fafa;
+        }
+
+        .input:focus{
+            background-color: #f7fafa;
+            border-color: #008296;
+            box-shadow: rgb(3, 252, 11) 1px 4px 5px 0;
+            outline: 0;
+        }
+
+        .input1{
+            background-color: #f7fafa;
+            border: 1px solid #d5d9d9;
+            border-radius: 8px;
+            box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+            box-sizing: border-box;
+            color: #0f1111;
+            /* cursor: pointer; */
+            display: inline-block;
+            /* font-family: "Amazon Ember",sans-serif; */
+            /* font-size: 13px; */
+            line-height: 29px;
+            padding: 0 10px 0 11px;
+            position: relative;
+            /* text-align: center; */
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            font: 15px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            width: 130px;
+            height: 30px;
+        }
+
+        .input1:focus{
+            background-color: #f7fafa;
+            border-color: #008296;
+            box-shadow: rgb(3, 252, 11) 1px 4px 5px 0;
+            outline: 0;
+        }
+        .rowTotal1{
+            background-color: #f7fafa;
+            border: 1px solid #d5d9d9;
+            border-radius: 8px;
+            box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+            box-sizing: border-box;
+            color: #0f1111;
+            /* cursor: pointer; */
+            display: inline-block;
+            /* font-family: "Amazon Ember",sans-serif; */
+            /* font-size: 13px; */
+            line-height: 29px;
+            padding: 0 10px 0 11px;
+            position: relative;
+            /* text-align: center; */
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            width: 130px;
+            height: 30px;
+        }
+
+        .rowTotal1:focus{
+            background-color: #f7fafa;
+            border-color: #008296;
+            box-shadow: rgb(3, 252, 11) 1px 4px 5px 0;
+            outline: 0;
+        }
+        .rowTotal2{
+            background-color: #f7fafa;
+            border: 1px solid #d5d9d9;
+            border-radius: 8px;
+            box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+            box-sizing: border-box;
+            color: #0f1111;
+            /* cursor: pointer; */
+            display: inline-block;
+            /* font-family: "Amazon Ember",sans-serif; */
+            /* font-size: 13px; */
+            line-height: 29px;
+            padding: 0 10px 0 11px;
+            position: relative;
+            /* text-align: center; */
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            width: 130px;
+            height: 30px;
+        }
+
+        .rowTotal2:focus{
+            background-color: #f7fafa;
+            border-color: #008296;
+            box-shadow: rgb(3, 252, 11) 1px 4px 5px 0;
+            outline: 0;
+        }
+        .rowTotal1:focus{
+            background-color: #f7fafa;
+            border-color: #008296;
+            box-shadow: rgb(3, 252, 11) 1px 4px 5px 0;
+            outline: 0;
+        }
+        .total{
+            background-color: #f7fafa;
+            border: 1px solid #d5d9d9;
+            border-radius: 8px;
+            box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+            box-sizing: border-box;
+            color: #0f1111;
+            /* cursor: pointer; */
+            display: inline-block;
+            /* font-family: "Amazon Ember",sans-serif; */
+            /* font-size: 13px; */
+            line-height: 29px;
+            padding: 0 10px 0 11px;
+            position: relative;
+            /* text-align: center; */
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            width: 130px;
+            height: 30px;
+        }
+
+        .total:focus{
+            background-color: #f7fafa;
+            border-color: #008296;
+            box-shadow: rgb(3, 252, 11) 1px 4px 5px 0;
+            outline: 0;
+        }
+
+        .caution{
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 20px;
+            color: rgb(255, 0, 0);
+        }
+
+        .caution-text{
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+
+        .button-33 {
+            background-color: #90e860;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+            color: green;
+            cursor: pointer;
+            display: inline-block;
+            font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+            padding: 7px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 250ms;
+            border: 0;
+            font-size: 24px;
+            width: 100px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-33:hover {
+            box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+        #add1 {
+            align-self: center;
+            margin: 0 auto;
+            /* margin-left: 360px; */
+            background-color: rgba(26, 247, 6, 0.718);
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #add1:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #add1:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #add2 {
+            align-self: center;
+            margin: 0 auto;
+            /* margin-left: 360px; */
+            background-color: rgba(26, 247, 6, 0.718);
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #add2:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #add2:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #add3 {
+            align-self: center;
+            margin: 0 auto;
+            /* margin-left: 360px; */
+            background-color: rgba(26, 247, 6, 0.718);
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #add3:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #add3:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #add4 {
+            align-self: center;
+            margin: 0 auto;
+            /* margin-left: 360px; */
+            background-color: rgba(26, 247, 6, 0.718);
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #add4:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #add4:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #add5 {
+            align-self: center;
+            margin: 0 auto;
+            /* margin-left: 360px; */
+            background-color: rgba(26, 247, 6, 0.718);
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #add5:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #add5:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #add6 {
+            align-self: center;
+            margin: 0 auto;
+            /* margin-left: 360px; */
+            background-color: rgba(26, 247, 6, 0.718);
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #add6:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #add6:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #addTotal {
+            align-self: center;
+            margin: 0 auto;
+            /* margin-left: 360px; */
+            background-color: rgba(26, 247, 6, 0.718);
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #addTotal:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #addTotal:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #addRow1 {
+            align-self: center;
+            margin: 0 auto;
+            /* margin-left: 360px; */
+            background-color: rgba(26, 247, 6, 0.718);
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 10px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #addRow1:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #addRow1:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #addRow2 {
+            align-self: center;
+            margin: 0 auto;
+            /* margin-left: 360px; */
+            background-color: rgba(26, 247, 6, 0.718);
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 10px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #addRow2:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #addRow2:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+
+        .labelRow1{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 1vw;
+        }
+        .labelRow2{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 1vw;
+        }
+        .labelRow3{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 1vw;
+        }
+
+        .rowTotal1{
+            margin-left: 1.5vw;
+        }
+        .rowTotal2{
+            margin-left: 1.5vw;
+        }
+        #totalLabel{
+            margin-left: 160px;
+        }
+        #add11{
+            margin-left: 110px;
+        }
+        #add21{
+            margin-left: 90px;
+        }
+        #add31{
+            margin-left: 90px;
+        }
+        #add41{
+            margin-left: 50px;
+        }
+        #add51{
+            margin-left: 70px;
+        }
+        #add61{
+            margin-left: 70px;
+        }
+        #addRow1{
+            margin-left: 2vw;
+        }
+        #add12{
+            margin-left: 240px;
+        }
+        #add22{
+            margin-left: 90px;
+        }
+        #add32{
+            margin-left: 90px;
+        }
+        #add42{
+            margin-left: 50px;
+        }
+        #add52{
+            margin-left: 70px;
+        }
+        #add62{
+            margin-left: 70px;
+        }
+        #addRow2{
+            margin-left: 2vw;
+        }
+
+        #add1{
+            margin-left: 410px;
+        }
+        #add2{
+            margin-left: 170px;
+        }
+        #add3{
+            margin-left: 170px;
+        }
+        #add4{
+            margin-left: 110px;
+        }
+        #add5{
+            margin-left: 130px;
+        }
+        #add6{
+            margin-left: 140px;
+        }
+        #addTotal{
+            margin-left: 150px;
+        }
+
+        #output1{
+            margin-left: 320px;
+        }
+        #output2{
+            margin-left: 100px;
+        }
+        #output3{
+            margin-left: 90px;
+        }
+        #output4{
+            margin-left: 50px;
+        }
+        #output5{
+            margin-left: 70px;
+        }
+        #output6{
+            margin-left: 70px;
+        }
+        #outputTotal{
+            margin-left: 90px;
+        }
+
+        
+
+        /* nav a{
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 25px;
+
+        } */
+        /* top: 50%;
+        left: 50%;
+        position: fixed;
+        opacity:0.09;
+        margin: auto; */
+    </style>
+</head>
+<body>
+
+    <div class="fixed-header">
+        <div class="container">
+            <nav>
+                <p>ICAR - INDIAN INSTITUTE OF OILSEEDS RESEARCH</p>
+                <p>Schedule for collecting the FPO farmers details</p>
+            </nav>
+        </div>
+        <img src="https://icar.org.in/files/icarlogo.png" alt="" class="icar">
+        <img src="https://icar-iior.org.in/sites/default/files/iior-logo-157x227.png" alt="" class="iior">
+    </div>
+    <br><br><br>
+    <form action="/livelihood_sources" method="post" class="fixed-form">
+        <h3 class="table-head">&#8551;.  Livelihood Sources </h3>
+        <div id="rec-box" class="button-85" role="button">
+            <!-- <label for="village" class="label-text">Village: </label>
+            <input id="input" type="text" placeholder="Enter Village Name" class="input-text1" name="village" required> -->
+            <br>
+            <br>
+            <label for="agriculture" class="label-text1">Agriculture</label>
+            <label for="animal_husbandry" class="label-text">Animal Husbandry</label>
+            <label for="fodder" class="label-text">Fodder</label>
+            <label for="poultry" class="label-text">Poultry</label>
+            <label for="value_addition" class="label-text">Value Addition</label>
+            <label for="others" class="label-text">Others</label>
+            <label for="total" class="label-text" id="totalLabel">Total</label>
+            <br>
+            <br>
+            <label for="income_per_year" class="labelRow1">Income(Rs.)/year of the family:</label>
+            <!-- <input type="number" id="column11" class="" placeholder="for Agriculture"> -->
+            <input type="number" id="add11" class="input" placeholder="for Agriculture" name="iagri">
+            <input type="number" id="add21" class="input" placeholder="for Animal Husbandry" name="ianmi">
+            <input type="number" id="add31" class="input" placeholder="for Fodder" name="ifodd">
+            <input type="number" id="add41" class="input" placeholder="for Poultry" name="ipoul">
+            <input type="number" id="add51" class="input" placeholder="for Value Addition" name="ivalue">
+            <input type="number" id="add61" class="input" placeholder="for Others" name="iother">
+            <input type="button" id="addRow1" class="" onclick="functionAddRow1()" value="ADD">
+            <input type="number" id="outputRow1" class="rowTotal1" placeholder="Total" name="itotal" required>
+           <br>
+           <br>
+            <label class="labelRow2">Value Addition:</label>
+            <input type="number" id="add12" class="input" placeholder="for Agriculture" name="vagri">
+            <input type="number" id="add22" class="input" placeholder="for Animal Husbandry" name="vanmi">
+            <input type="number" id="add32" class="input" placeholder="for Fodder" name="vfodd">
+            <input type="number" id="add42" class="input" placeholder="for Poultry" name="vpoul">
+            <input type="number" id="add52" class="input" placeholder="for Value Addition" name="vvalue">
+            <input type="number" id="add62" class="input" placeholder="for Others" name="vother">
+            <input type="button" id="addRow2" class="" onclick="functionAddRow2()" value="ADD">
+            <input type="number" id="outputRow2" class="rowTotal2" placeholder="Total" name="vtotal"  required>
+           <br>
+           <br>
+           <button id ="add1" type="button" onclick="functionAdd1()">ADD</button>
+           <button id="add2" type="button" onclick="functionAdd2()">ADD</button>
+           <button id="add3" type="button" onclick="functionAdd3()">ADD</button>
+           <button id="add4" type="button" onclick="functionAdd4()">ADD</button>
+           <button id="add5" type="button" onclick="functionAdd5()">ADD</button>
+           <button id="add6" type="button" onclick="functionAdd6()">ADD</button>
+           <button id="addTotal" type="button" onclick="functionAddTotal()">ADD</button>
+           <p id="idOne1">
+            <p id="idOne2">
+            </p>
+            <p id="idTwo1">
+            <p id="idTwo2">
+            </p>
+            <p id="idThree1">
+            <p id="idThree2">
+            </p>
+            <p id="idFour1">
+            <p id="idFour2">
+            </p>
+            <p id="idFive1">
+            <p id="idFive2">
+            </p>
+            <p id="idSix1">
+            <p id="idSix2">
+            </p>
+            <p id="idRow11">
+            <p id="idRow21">
+            <p id="idRow31">
+            <p id="idRow41">
+            <p id="idRow51">
+            <p id="idRow61">
+            </p>
+            <p id="idRow12">
+            <p id="idRow22">
+            <p id="idRow32">
+            <p id="idRow42">
+            <p id="idRow52">
+            <p id="idRow62">
+            </p>
+            <p id="idOutputRow1">
+            <p id="idOutputRow2">
+            </p>
+            <br>
+            <label for="total" class="labelRow3">Total:</label>
+            <input type="text" class="input1" id="output1" placeholder="Press ADD" name="agritotal" required>
+            <input type="text" class="input1" id="output2" placeholder="Press ADD" name="anmitotal" required>
+            <input type="text" class="input1" id="output3" placeholder="Press ADD" name="foddtotal" required>
+            <input type="text" class="input1" id="output4" placeholder="Press ADD" name="poultotal" required>
+            <input type="text" class="input1" id="output5" placeholder="Press ADD" name="valuetotal" required>
+            <input type="text" class="input1" id="output6" placeholder="Press ADD" name="otherstotal" required>
+            <input type="number" class="total" id="outputTotal" placeholder="Total" name="totaltotal" required>
+        
+            
+        </div>
+        
+        
+        <div class="caution">
+            <label for="caution" class="caution-text">*Check the fields again before going to next page*</label>
+        </div>
+        <div class="next-btn">
+            <a><button class="button-33" role="button">Next</button></a>
+        </div>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="fixed-footer">
+        <div class="container">Copyright &copy; ICAR</div>        
+    </div> 
+
+
+    <script>
+        function functionAdd1() {
+            var num1 = document.getElementById("add11").value;
+            var num2 = document.getElementById("add12").value;
+            var result1;
+            result1 = Number(num1) + Number(num2);
+
+
+            document.getElementById("idOne1").value = num1;
+            document.getElementById("idOne2").value = num2;
+            document.getElementById("output1").value = result1;
+
+        }
+
+        function functionAdd2(){
+            var num1 = document.getElementById("add21").value;
+            var num2 = document.getElementById("add22").value;
+            var result2;
+            result2 = Number(num1) + Number(num2);
+
+            document.getElementById("idTwo1").value = num1;
+            document.getElementById("idTwo2").value = num2;
+            document.getElementById("output2").value = result2;
+        }
+
+        function functionAdd3(){
+            var num1 = document.getElementById("add31").value;
+            var num2 = document.getElementById("add32").value;
+            var result3;
+            result3 = Number(num1) + Number(num2);
+
+            document.getElementById("idThree1").value = num1;
+            document.getElementById("idThree2").value = num2;
+            document.getElementById("output3").value = result3;
+        }
+
+        function functionAdd4(){
+            var num1 = document.getElementById("add41").value;
+            var num2 = document.getElementById("add42").value;
+            var result4;
+            result4 = Number(num1) + Number(num2);
+
+            document.getElementById("idFour1").value = num1;
+            document.getElementById("idFour2").value = num2;
+            document.getElementById("output4").value = result4;
+        }
+        function functionAdd5(){
+            var num1 = document.getElementById("add51").value;
+            var num2 = document.getElementById("add52").value;
+            var result5;
+            result5 = Number(num1) + Number(num2);
+
+            document.getElementById("idFive1").value = num1;
+            document.getElementById("idFive2").value = num2;
+            document.getElementById("output5").value = result5;
+        }
+        function functionAdd6(){
+            var num1 = document.getElementById("add61").value;
+            var num2 = document.getElementById("add62").value;
+            var result6;
+            result6 = Number(num1) + Number(num2);
+
+            document.getElementById("idSix1").value = num1;
+            document.getElementById("idSix2").value = num2;
+            document.getElementById("output6").value = result6;
+        }
+
+        function functionAddRow1(){
+            var n1 = document.getElementById("add11").value;
+            var n2 = document.getElementById("add21").value;
+            var n3 = document.getElementById("add31").value;
+            var n4 = document.getElementById("add41").value;
+            var n5 = document.getElementById("add51").value;
+            var n6 = document.getElementById("add61").value;
+            var result7;
+            result7 = Number(n1) + Number(n2) + Number(n3) + Number(n4) + Number(n5) + Number(n6);
+            
+            document.getElementById("idRow11").value = n1;
+            document.getElementById("idRow21").value = n2;
+            document.getElementById("idRow31").value = n3;
+            document.getElementById("idRow41").value = n4;
+            document.getElementById("idRow51").value = n5;
+            document.getElementById("idRow61").value = n6;
+            document.getElementById("outputRow1").value = result7;
+        }
+        function functionAddRow2(){
+            var n1 = document.getElementById("add12").value;
+            var n2 = document.getElementById("add22").value;
+            var n3 = document.getElementById("add32").value;
+            var n4 = document.getElementById("add42").value;
+            var n5 = document.getElementById("add52").value;
+            var n6 = document.getElementById("add62").value;
+            var result8;
+            result8 = Number(n1) + Number(n2) + Number(n3) + Number(n4) + Number(n5) + Number(n6);
+            
+            document.getElementById("idRow12").value = n1;
+            document.getElementById("idRow22").value = n2;
+            document.getElementById("idRow32").value = n3;
+            document.getElementById("idRow42").value = n4;
+            document.getElementById("idRow52").value = n5;
+            document.getElementById("idRow62").value = n6;
+            document.getElementById("outputRow2").value = result8;
+        }
+
+        function functionAddTotal(){
+            var n1 = document.getElementById("outputRow1").value;
+            var n2 = document.getElementById("outputRow2").value;
+            var resultTotal;
+            resultTotal = Number(n1) + Number(n2);
+
+            document.getElementById("idOutputRow1").value = n1;
+            document.getElementById("idOutputRow2").value = n2;
+            document.getElementById("outputTotal").value = resultTotal;
+        }
+
+
+    </script>
+</body>
+</html>

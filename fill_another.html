@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+
+    
+    <title>{% block title %}Last Page{% endblock %}</title>
+    <style>
+
+        body{
+            background: rgb(17,7,12);
+            /* background: linear-gradient(90deg, rgba(17,7,12,1) 0%, rgba(9,235,202,1) 0%, rgba(183,0,255,1) 57%, rgba(31,174,59,0.3648809865743172) 100%, rgba(44,38,58,1) 100%, rgba(44,19,30,1) 100%); */
+            background-image: linear-gradient(144deg, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+        }
+        .fixed-header, .fixed-footer{
+            width: 100%;
+            position: fixed;        
+            background: rgb(35, 68, 101);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+            font-size: larger;
+            display: inline-block;
+        }
+        .fixed-header{
+            top: 0;
+        }
+        div.fixed-header{
+            height: 120px;
+        }
+        .fixed-footer{
+            bottom: 0;
+        }
+        .icar{
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            margin-right: 1000px;
+            margin-top: -100px;
+            margin-bottom: 15px;
+        }
+        img.iior{
+            height: 100px;
+            width: 100px;
+            top: 1.5%;
+            left: 80%;
+            position: fixed;
+            margin: auto;
+        }
+
+        .c{
+            margin: auto 0;
+            background-color: white;
+            height: 200px;
+            width: 500px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            border:10px solid #d16ba5;
+            border-bottom: 0px;
+            border-right: 0px;
+            border-left: 0px;
+            margin-left: 30%;
+            text-align: center;
+            /* margin-left: 350px; */
+        }
+
+        .head1{
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-size: 27px;
+            font-family: "Copperplate Gothic Light";
+        }
+        .head2{
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-size: 20px;
+            font-family: "Copperplate Gothic Light";
+        }
+        .submit{
+            font-size: 20px;
+            background-color: white;
+            text-decoration: underline;
+            color:#00baf8 ;
+            border: 0px;
+        }
+        .submit:hover{
+            cursor: pointer;
+        }
+
+        .container{
+            margin: auto 0;
+            margin-top: 8%;
+            height: 600px;
+            width: 100%;
+        }
+        @media only screen and (max-width: 600px) {
+            body{
+                background: rgb(17,7,12);
+                /* background: linear-gradient(90deg, rgba(17,7,12,1) 0%, rgba(9,235,202,1) 0%, rgba(183,0,255,1) 57%, rgba(31,174,59,0.3648809865743172) 100%, rgba(44,38,58,1) 100%, rgba(44,19,30,1) 100%); */
+                background-image: linear-gradient(144deg, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+
+            .fixed-header, .fixed-footer{
+            width: 100%;
+            position: fixed;        
+            background: rgb(35, 68, 101);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+            font-size: smaller;
+            display: inline-block;
+            }
+            .fixed-header{
+                top: 0;
+            }
+            div.fixed-header{
+                height: 120px;
+            }
+            .fixed-footer{
+                bottom: 0;
+            }
+            .icar{
+                height: 50px;
+                width: 50px;
+                margin: 0 auto;
+                margin-left: -300px;
+                margin-top: -3px;
+                margin-bottom: 15px;
+            }
+            img.iior{
+                height: 50px;
+                width: 50px;
+                top: 11.5%;
+                left: 80%;
+                position: fixed;
+                margin: auto;
+            }
+            img.icar{
+                bottom: 0;
+            }
+
+
+
+            .container{
+                margin: auto 0;
+                margin-top: 30%;
+                margin-left: -24%;
+            }
+            .c{
+                height: 30%;
+                width: 90%;
+                /* top: 0; */
+            }
+
+            /* .c{
+                margin: auto 0;
+                background-color: white;
+                height: 200px;
+                width: 500px;
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+                border:10px solid #d16ba5;
+                border-bottom: 0px;
+                border-right: 0px;
+                border-left: 0px;
+                margin-left: 30%;
+                text-align: center;
+                margin-left: 350px;
+            } */
+
+            .head1{
+                /* font: 20px Arial, Helvetica, sans-serif; */
+                font-size: 20px;
+                font-family: "Copperplate Gothic Light";
+            }
+            .head2{
+                /* font: 20px Arial, Helvetica, sans-serif; */
+                font-size: 15px;
+                font-family: "Copperplate Gothic Light";
+            }
+            .submit{
+                font-size: 20px;
+                background-color: white;
+                text-decoration: underline;
+                color:#00baf8 ;
+                border: 0px;
+            }
+            .submit:hover{
+                cursor: pointer;
+            }
+    }
+
+        
+    </style>
+</head>
+<body>
+    <div class="fixed-header">
+        <div class="">
+            <nav>
+                <p>ICAR - INDIAN INSTITUTE OF OILSEEDS RESEARCH</p>
+                <p>Schedule for collecting the FPO farmers details</p>
+            </nav>
+        </div>
+        <img src="https://icar.org.in/files/icarlogo.png" alt="" class="icar">
+        <img src="https://icar-iior.org.in/sites/default/files/iior-logo-157x227.png" alt="" class="iior">
+    </div>
+    <br><br><br><br><br>
+    <form action="/fill_another" method="post">
+        <div class="container">
+            <div class="c">
+                <h1 class="head1">Details Of FPO Farmer Details</h1>
+                <p class="head2">Your response has been recorded.</p>
+                <br>
+                <input type="submit" class="submit" value="Submit another response">
+
+            </div>
+        </div>
+    </form>
+<!-- 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script> -->
+</body>
+</html>

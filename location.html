@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Location{% endblock %}</title>
+
+    <style>
+        body {
+            background: rgb(17, 7, 12);
+            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+        }
+
+        .fixed-header,
+        .fixed-footer {
+            width: 100%;
+            position: fixed;
+            background: rgb(35, 68, 101);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+            font-size: larger;
+            display: inline-block;
+        }
+
+        .fixed-header {
+            top: 0;
+        }
+
+        div.fixed-header {
+            height: 120px;
+        }
+
+        .fixed-footer {
+            bottom: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            /* Center the DIV horizontally */
+
+        }
+
+        .icar {
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            margin-right: 1000px;
+            margin-top: -100px;
+            margin-bottom: 15px;
+        }
+
+        img.iior {
+            height: 100px;
+            width: 100px;
+            top: 1.5%;
+            left: 80%;
+            position: fixed;
+            margin: auto;
+        }
+
+        #rec-box {
+            top: 50%;
+            width: 680px;
+            height: 250px;
+            border: 30px;
+            margin: 0 auto;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        form.fixed-form {
+            margin-top: -110px;
+        }
+
+        .table-head {
+            /* top: 40%; */
+            border: 30px;
+            margin: 0 auto;
+            margin-top: 290px;
+            margin-left: 380px;
+            border-radius: 10px;
+            color: rgb(7, 7, 7);
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            /* cursor: pointer; */
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-85:before {
+            content: "";
+            /* background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+            ); */
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing-button-85 {
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 400% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgb(255, 255, 255);
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        .label-text {
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            margin-left: 30px;
+            margin-bottom: -80px;
+        }
+
+        .input-text1 {
+            height: 24px;
+            width: 330px;
+            border-radius: 10px;
+            margin-left: 103px;
+            font: 20px Arial, Helvetica, sans-serif;
+            cursor: pointer;
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .input-text2 {
+            height: 24px;
+            width: 330px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-left: 100px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .input-text3 {
+            height: 24px;
+            width: 330px;
+            border-radius: 10px;
+            margin-left: 70px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .input-text4 {
+            height: 24px;
+            width: 330px;
+            border-radius: 10px;
+            margin-left: 93px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .next-btn {
+            margin: auto;
+            margin-top: 40px;
+            margin-left: 1020px;
+        }
+
+        #input {
+            border: 3px solid;
+            border-radius: 10px;
+            height: 23px;
+            width: 220px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+
+        #input:hover {
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        #input:focus {
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+
+        .button-33 {
+            background-color: #90e860;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+            color: green;
+            cursor: pointer;
+            display: inline-block;
+            font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+            padding: 7px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 250ms;
+            border: 0;
+            font-size: 24px;
+            width: 100px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-33:hover {
+            box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px;
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+
+        /* nav a{
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 25px;
+
+        } */
+        /* top: 50%;
+        left: 50%;
+        position: fixed;
+        opacity:0.09;
+        margin: auto; */
+
+        .container3 {
+            text-align: center;
+        }
+
+        .text {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 576px) {
+
+            /* Small screens */
+            .text {
+                font-size: 20px;
+            }
+        }
+
+        @media (min-width: 768px) {
+
+            /* Medium screens */
+            .text {
+                font-size: 22px;
+            }
+        }
+
+        @media (min-width: 992px) {
+
+            /* Large screens */
+            .text {
+                font-size: 24px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+
+            /* Extra-large screens */
+            .text {
+                font-size: 26px;
+            }
+        }
+
+        @media (min-width: 1600px) {
+
+            /* Cube screens */
+            .text {
+                font-size: 28px;
+            }
+        }
+
+        .a-tag {
+            color: lightseagreen;
+        }
+        .team-btn:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="fixed-header">
+        <div class="container">
+            <nav>
+                <p>ICAR - INDIAN INSTITUTE OF OILSEEDS RESEARCH</p>
+                <p>Schedule for collecting the FPO farmers details</p>
+            </nav>
+        </div>
+        <img src="https://icar.org.in/files/icarlogo.png" alt="" class="icar">
+        <img src="https://icar-iior.org.in/sites/default/files/iior-logo-157x227.png" alt="" class="iior">
+    </div>
+    <br><br><br>
+    <form action="/" method="post" class="fixed-form">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <h3 class="table-head">&#8544;. Location </h3>
+        <div id="rec-box" class="button-85" role="button">
+            <br>
+            <br>
+            <label for="mandal" class="label-text">Mandal: </label>
+            <!-- <input id="input" type="text" placeholder="Enter Mandal Name" class="input-text2" name="mandal" required> -->
+            <select type="text" id="input" class="input-text2" name="mandal" required>
+                <option value="">
+                    <h4>Select Mandal Name</h4>
+                </option>
+                <option value="CHINNAKODUR MANDAL">CHINNAKODUR MANDAL</option>
+                <option value="NARAYANRAOPET MANDAL">NARAYANRAOPET MANDAL</option>
+            </select>
+            <br>
+            <br>
+            <label for="village" class="label-text">Village: </label>
+            <!-- <input id="input" type="text" placeholder="Enter Village Name" class="input-text1" name="village" required> -->
+            <select type="text" id="input" class="input-text1" name="village" required>
+                <option value="">Select Village Name</option>
+            </select>
+            <br>
+            <br>
+            <label for="panchayat" class="label-text">Panchayat: </label>
+            <input id="input" type="text" placeholder="Enter Panchayat Name" class="input-text3" name="panchayat"
+                required>
+            <br>
+            <br>
+            <label for="district" class="label-text">District: </label>
+            <input id="input" type="text" placeholder="Enter District Name" class="input-text4" name="district"
+                required>
+        </div>
+        <div class="next-btn">
+            <a href="/information"><button class="button-33" role="button">Next</button></a>
+        </div>
+    </form>
+    <br>
+
+    <div class="container3">
+        <p class="text">
+            Developed by <a href="https://www.icar-iior.org.in/" class="a-tag">ICAR-IIOR</a> in
+            collaboration with
+            <a href="https://www.kluniversity.in/" class="a-tag">KLEF, Hyderabad</a>
+        </p>
+
+        <form action="/team" method="post">
+            <button class="team-btn" style="background: none; border: 0 ">
+                <p class="text">TEAM</p>
+            </button>
+        </form>
+    </div>
+    <br><br>
+
+
+    <div class="fixed-footer">
+        <div class="container">Copyright &copy; ICAR</div>
+    </div>
+
+
+
+    <script>
+
+
+        $(document).ready(function () {
+            $(".input-text2").change(function () {
+                var val = $(this).val();
+                if (val == "CHINNAKODUR MANDAL") {
+                    $(".input-text1").html("<option value=''>Select Village Name</option><option value='Chinnakodur'>Chinnakodur</option><option value='Metpally'>Metpally</option><option value='Peddakodur'>Peddakodur</option><option value='Ramancha'>Ramancha</option><option value='Gangapur'>Gangapur</option><option value='Chandlapur'>Chandlapur</option><option value='Vittalapur'>Vittalapur</option><option value='Rangayapally'>Rangayapally</option><option value='Machapur'>Machapur</option><option value='Chowdaram'>Chowdaram</option><option value='Medipally'>Medipally</option><option value='Ibrahimnagar'>Ibrahimnagar</option><option value='Ramunipatla'>Ramunipatla</option><option value='GonePally'>GonePally</option><option value='Obulapur'>Obulapur</option><option value='Kasturipally'>Kasturipally</option><option value='Mallaram'>Mallaram</option><option value='Ananthasagar'>Ananthasagar</option><option value='Mailaram'>Mailaram</option><option value='Chelkalpally'>Chelkalpally</option><option value='Sikindlapur'>Sikindlapur</option><option value='Allipur'>Allipur</option><option value='Kistapur'>Kistapur</option><option value='CherlaAnkireddypally'>CherlaAnkireddypally</option><option value='Shivunipally'>Shivunipally</option><option value='Yellaypally'>Yellaypally</option> ");
+                } else if (val == "NARAYANRAOPET MANDAL") {
+                    $(".input-text1").html("<option value=''>Select Village Name</option><option value='Narayanraoper'>Narayanraoper</option><option value='Laxmidevpally'>Laxmidevpally</option><option value='Banjarpally'>Banjarpally</option><option value='Ibrahipur'>Ibrahipur</option><option value='Matindla'>Matindla</option><option value='Jakkapur'>Jakkapur</option><option value='Gurralagondhi'>Gurralagondhi</option><option value='Malyala'>Malyala</option><option value='Gopulapur'>Gopulapur</option><option value='Kodhandaraopally'>Kodhandaraopally</option>");
+                }
+            });
+        });
+
+
+    </script>
+
+
+
+</body>
+
+</html>

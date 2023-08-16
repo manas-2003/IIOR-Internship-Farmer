@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Input Costs{% endblock %}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        body{
+            background: rgb(17,7,12);
+            /* background: linear-gradient(90deg, rgba(17,7,12,1) 0%, rgba(9,235,202,1) 0%, rgba(183,0,255,1) 57%, rgba(31,174,59,0.3648809865743172) 100%, rgba(44,38,58,1) 100%, rgba(44,19,30,1) 100%); */
+            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+        }
+
+
+
+        .fixed-header, .fixed-footer{
+            width: 100%;
+            position: fixed;
+            background: rgb(35, 68, 101);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+            font-size: larger;
+            display: inline-block;
+        }
+        .fixed-header{
+            top: 0;
+        }
+        div.fixed-header{
+            height: 120px;
+        }
+        .fixed-footer{
+            bottom: 0;
+        }
+        .container{
+            width: 80%;
+            margin: 0 auto; /* Center the DIV horizontally */
+
+        }
+        .icar{
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            margin-right: 1000px;
+            margin-top: -100px;
+            margin-bottom: 15px;
+        }
+        img.iior{
+            height: 100px;
+            width: 100px;
+            top: 1.5%;
+            left: 80%;
+            position: fixed;
+            margin: auto;
+        }
+
+
+
+        .container{
+            background-color: aliceblue;
+            /* text-align: center; */
+            height: 1900px;
+            width: 1500px;
+            margin: auto 0;
+            margin-top: 60px;
+            margin-left: 60px;
+            border-radius: 20px;
+        }
+        .contain{
+            width: 1800px;
+            height: 1900px;
+        }
+
+        .headers{
+            margin: auto 0;
+            margin-left: 30px;
+            /* margin-bottom: -20px; */
+        }
+
+        .heading{
+            margin: auto 0;
+            margin-top: 70px;
+            margin-left: 100px;
+            margin-bottom: -40px;
+            font-size: larger;
+            font-weight: bolder;
+            color: rgb(0, 0, 0);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            /* font-family: "Copperplate Gothic Light"; */
+        }
+
+        #label{
+            font-size: larger;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .header1{
+            margin-left: 10px;
+        }
+
+        .header2{
+            margin-left: 230px;
+        }
+        .header3{
+            margin-left: 130px;
+        }
+        .header4{
+            margin-left: 130px;
+        }
+        .header5{
+            margin-left: 130px;
+        }
+
+        .seed_label{
+            margin-left: 35px;
+        }
+
+        .input{
+            border: 3px solid;
+            border-radius: 10px;
+            height: 35px;
+            width: 230px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        .input:hover{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        .input:focus{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+        .input1{
+            border: 3px solid;
+            border-radius: 10px;
+            height: 35px;
+            width: 70px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        .input1:hover{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        .input1:focus{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        #seed_quantity{
+            margin-left: 120px;
+        }
+
+        #seed_unitPrice{
+            margin-left: 15px;
+        }
+
+        #seed_sourceOfInput{
+            margin-left: 60px;
+        }
+
+        #seed_nameAndPlace{
+            margin-left: 106px;
+        }
+
+        .fym_label{
+            margin-left: 35px;
+        }
+
+        #fym_quantity{
+            margin-left: 75px;
+        }
+
+        #fym_unitPrice{
+            margin-left: 15px;
+        }
+
+        #fym_sourceOfInput{
+            margin-left: 60px;
+        }
+
+        #fym_nameAndPlace{
+            margin-left: 105px;
+        }
+        .fertilizers_label{
+            margin-left: 35px;
+        }
+        .fertilizers1_label{
+            margin-left: 35px;
+        }
+        .fertilizers2_label{
+            margin-left: 35px;
+        }
+        .fertilizers3_label{
+            margin-left: 35px;
+        }
+        .fertilizers4_label{
+            margin-left: 35px;
+        }
+        #fertilizers1_quan{
+            margin-left: 20px;
+            width: 165px;
+            margin-top: 20px;
+        }
+        #fertilizers2_quan{
+            margin-left: 20px;
+            width: 165px;
+            margin-top: 20px;
+        }
+        #fertilizers3_quan{
+            margin-left: 20px;
+            width: 165px;
+            margin-top: 20px;
+        }
+        #fertilizers4_quan{
+            margin-left: 20px;
+            width: 165px;
+            margin-top: 20px;
+        }
+        #fertilizers1_quantity{
+            margin-left: 58px;
+        }
+        #fertilizers2_quantity{
+            margin-left: 50px;
+        }
+        #fertilizers3_quantity{
+            margin-left: 195px;
+        }
+        #fertilizers4_quantity{
+            margin-left: 190px;
+        }
+        #fertilizers1_unitPrice{
+            margin-left: 15px;
+        }
+        #fertilizers2_unitPrice{
+            margin-left: 15px;
+        }
+        #fertilizers3_unitPrice{
+            margin-left: 15px;
+        }
+        #fertilizers4_unitPrice{
+            margin-left: 15px;
+        }
+        #fertilizers1_sourceOfInput{
+            margin-left: 60px;
+        }
+        #fertilizers2_sourceOfInput{
+            margin-left: 60px;
+        }
+        #fertilizers3_sourceOfInput{
+            margin-left: 60px;
+        }
+        #fertilizers4_sourceOfInput{
+            margin-left: 60px;
+        }
+        #fertilizers1_nameAndPlace{
+            margin-left: 105px;
+        }
+        #fertilizers2_nameAndPlace{
+            margin-left: 105px;
+        }
+        #fertilizers3_nameAndPlace{
+            margin-left: 105px;
+        }
+        #fertilizers4_nameAndPlace{
+            margin-left: 105px;
+        }
+
+        .plantProtection_label{
+            margin-left: 35px;
+        }
+        .plantProtection1_label{
+            margin-left: 35px;
+        }
+        .plantProtection2_label{
+            margin-left: 35px;
+        }
+        .plantProtection3_label{
+            margin-left: 35px;
+        }
+        .plantProtection4_label{
+            margin-left: 35px;
+        }
+        #plantProtection1_quan{
+            margin-left: 25px;
+            width: 165px;
+            margin-top: 20px;
+        }
+        #plantProtection2_quan{
+            margin-left: 15px;
+            width: 165px;
+            margin-top: 20px;
+        }
+        #plantProtection1_quantity{
+            margin-left: 60px;
+        }
+        #plantProtection2_quantity{
+            margin-left: 60px;
+        }
+        #plantProtection3_quantity{
+            margin-left: 195px;
+        }
+        #plantProtection4_quantity{
+            margin-left: 195px;
+        }
+        #plantProtection1_unitPrice{
+            margin-left: 15px;
+        }
+        #plantProtection2_unitPrice{
+            margin-left: 15px;
+        }
+        #plantProtection3_unitPrice{
+            margin-left: 15px;
+        }
+        #plantProtection4_unitPrice{
+            margin-left: 15px;
+        }
+        #plantProtection1_sourceOfInput{
+            margin-left: 60px;
+        }
+        #plantProtection2_sourceOfInput{
+            margin-left: 60px;
+        }
+        #plantProtection3_sourceOfInput{
+            margin-left: 60px;
+        }
+        #plantProtection4_sourceOfInput{
+            margin-left: 58px;
+        }
+        #plantProtection1_nameAndPlace{
+            margin-left: 102px;
+        }
+        #plantProtection2_nameAndPlace{
+            margin-left: 102px;
+        }
+        #plantProtection3_nameAndPlace{
+            margin-left: 102px;
+        }
+        #plantProtection4_nameAndPlace{
+            margin-left: 102px;
+        }
+        .herbicides_label{
+            margin-left: 35px;
+        }
+        .herbicides1_label{
+            margin-left: 35px;
+        }
+        .herbicides2_label{
+            margin-left: 35px;
+        }
+        .herbicides3_label{
+            margin-left: 35px;
+        }
+        #herbicides1_quan{
+            margin-left: 25px;
+            width: 165px;
+            margin-top: 20px;
+        }
+        #herbicides2_quan{
+            margin-left: 15px;
+            width: 165px;
+            margin-top: 20px;
+        }
+        #herbicides1_quantity{
+            margin-left: 60px;
+        }
+        #herbicides2_quantity{
+            margin-left: 60px;
+        }
+        #herbicides3_quantity{
+            margin-left: 196px;
+        }
+        #herbicides1_unitPrice{
+            margin-left: 15px;
+        }
+        #herbicides2_unitPrice{
+            margin-left: 15px;
+        }
+        #herbicides3_unitPrice{
+            margin-left: 15px;
+        }
+        #herbicides1_sourceOfInput{
+            margin-left: 60px;
+        }
+        #herbicides2_sourceOfInput{
+            margin-left: 60px;
+        }
+        #herbicides3_sourceOfInput{
+            margin-left: 60px;
+        }
+        #herbicides1_nameAndPlace{
+            margin-left: 100px;
+        }
+        #herbicides2_nameAndPlace{
+            margin-left: 100px;
+        }
+        #herbicides3_nameAndPlace{
+            margin-left: 100px;
+        }
+        .others_label{
+            margin-left: 35px;
+        }
+        #others_quantity{
+            margin-left: 133px;
+        }
+        #others_unitPrice{
+            margin-left: 15px;
+        }
+        #others_sourceOfInput{
+            margin-left: 60px;
+        }
+        #others_nameAndPlace{
+            margin-left: 100px;
+        }
+
+
+        .next_button{
+            background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+            margin: auto 0;
+            margin-left: 500px;
+            margin-top: 40px;
+            width: 540px;
+            height: 50px;
+            border-radius: 10px;
+            font-size: 40px;
+            font-weight: bolder;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+        .next_button:hover{
+            background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB,  #6fba82);
+            box-shadow: #07b39b;
+            border: 2px solid #d000eb;
+            cursor: pointer;
+            height: 55px;
+            transform: translateY("100deg");
+        }
+
+
+        .add_form_field{
+            font-family: "Copperplate";
+            font-weight: bolder;
+            border-radius: 10px;
+            height: 35px;
+            margin-left: 60px;
+            background-color: #37ff00;
+        }
+        .add_form_field:hover{
+            box-shadow: rgba(9, 118, 241, 0.987) 0px 0px 0px 3px;
+            cursor: pointer;
+            transform: translate3d(0, 2px, 0);
+            background-color: rgb(234, 8, 255);
+        }
+
+        .add_plant_field{
+            font-family: "Copperplate";
+            font-weight: bolder;
+            border-radius: 10px;
+            height: 35px;
+            margin-left: 60px;
+            background-color: #37ff00;
+        }
+        .add_plant_field:hover{
+            box-shadow: rgba(9, 118, 241, 0.987) 0px 0px 0px 3px;
+            cursor: pointer;
+            transform: translate3d(0, 2px, 0);
+            background-color: rgb(234, 8, 255);
+        }
+        .add_herbicides_field{
+            font-family: "Copperplate";
+            font-weight: bolder;
+            border-radius: 10px;
+            height: 35px;
+            margin-left: 60px;
+            background-color: #37ff00;
+        }
+        .add_herbicides_field:hover{
+            box-shadow: rgba(9, 118, 241, 0.987) 0px 0px 0px 3px;
+            cursor: pointer;
+            transform: translate3d(0, 2px, 0);
+            background-color: rgb(234, 8, 255);
+        }
+        .small_caution{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="fixed-header">
+    <div class="">
+        <nav>
+            <p>ICAR - INDIAN INSTITUTE OF OILSEEDS RESEARCH</p>
+            <p>Schedule for collecting the FPO farmers details</p>
+        </nav>
+    </div>
+    <img src="https://icar.org.in/files/icarlogo.png" alt="" class="icar">
+    <img src="https://icar-iior.org.in/sites/default/files/iior-logo-157x227.png" alt="" class="iior">
+</div>
+<br><br><br><br><br>
+    <div class="heading">
+        <label for="">&#8552; a. Input Costs</label>
+        <!-- <script>
+            document.getElementById("member").value = localStorage.getItem("x1");
+            var number = localStorage.getItem("x1");
+            var container = document.getElementById("container");
+            document.getElementById("member").value = number;
+        </script> -->
+        <!-- <a href="#" id="filldetails" onclick="addFields()">Fill Details</a> -->
+        <input type="text" id="member" name="member1" class="input1" value="{{x1}}"><br />
+<!--        <p>{{ item }}</p>-->
+    </div>
+    <form action="sample_input_costs" method="post">
+        <div class="contain">
+            <div class="container">
+                <br>
+                <br>
+                <div class="headers">
+                    <label for="Item" class="header1" id="label">Item</label>
+                    <label for="Quantity" class="header2" id="label">Quantity</label>
+                    <label for="UnitPrice" class="header3" id="label">Unit Price (Rs.)</label>
+                    <label for="SourceOfInput" class="header4" id="label">Source Of Input</label>
+                    <label for="NameAndPlace" class="header5" id="label">Name & Place (Address)</label>
+                </div>
+                <br>
+                <br>
+                <div class="seed">
+                    <label for="seed" id="label" class="seed_label">Seed(kg): </label>
+                    <input type="number" class="input" id="seed_quantity" placeholder="Enter Quantity" name="sq">
+                    <input type="number" class="input" id="seed_unitPrice" placeholder="Enter UnitPrice" name="su">
+                    <!-- <input type="text" class="input" id="seed_sourceOfInput" placeholder="Enter Source Of Input" name="ss"> -->
+                    <select type="text" class="input" id="seed_sourceOfInput" name="ss">
+                        <option value="">Select Source Of Input</option><option value="same village">From same village shop</option><option value="nearby town">From nearby town</option><option value="Owned">Owned(Seed for FYM)</option>
+                    </select>
+                    <input type="text" class="input" id="seed_nameAndPlace" placeholder="Enter Name & Place" name="sa">
+                </div>
+                <br>
+                <br>
+                <div class="fym">
+                    <label for="fym" id="label" class="fym_label">FYM(tonnes): </label>
+                    <input type="number" class="input" id="fym_quantity" placeholder="Enter Quantity" name="fq">
+                    <input type="number" class="input" id="fym_unitPrice" placeholder="Enter Unit Price" name="fu">
+                    <!-- <input type="text" class="input" id="fym_sourceOfInput" placeholder="Enter Source Of Input" name="fs"> -->
+                    <select type="text" class="input" id="fym_sourceOfInput" name="fs">
+                        <option value="">Select Source Of Input</option><option value="same village">From same village shop</option><option value="nearby town">From nearby town</option><option value="Owned">Owned(Seed for FYM)</option>
+                    </select>
+                    <input type="text" class="input" id="fym_nameAndPlace" placeholder="Enter Name & Place" name="fa">
+                </div>
+                <br>
+                <br>
+                <div class="fertilizers">
+                    <label for="fertilizers" id="label" class="fertilizers_label">Fertilizers(kg): </label>
+                    <br>
+                    <br>
+                    <div class="fertilizers1">
+                        <!-- <label for="i" id="label" class="fertilizers1_label"> </label>
+                        <input type="number" class="input" id="fertilizers1_quantity" name="mytext1[]"  placeholder="Enter Quanitity">
+                        <input type="number" class="input" id="fertilizers1_unitPrice"  name="mytext2[]" placeholder="Enter Unit Price">
+                        <input type="text" class="input" id="fertilizers1_sourceOfInput" name="mytext3[]" placeholder="Enter Source Of Input">
+                        <input type="text" class="input" id="fertilizers1_nameAndPlace" name="mytext4[]"  placeholder="Enter Name & Place"> -->
+                        <div class="container1">
+                            <button class="add_form_field">Add New Field &nbsp;
+                                <span style="font-size:16px; font-weight:bold;">+ </span>
+                            </button>
+                            <div>
+                                <input type="text" name="mytext0[]" class="input" id="fertilizers1_quan" placeholder="Enter Name" >
+                                <input type="number" name="mytext1[]" class="input" id="fertilizers1_quantity" placeholder="Enter Quantity">
+                                <input type="number" name="mytext2[]" class="input" id="fertilizers1_unitPrice" placeholder="Enter Unit Price">
+                                <!-- <input type="text" name="mytext3[]" class="input" id="fertilizers1_sourceOfInput" placeholder="Enter Source Of Input"> -->
+                                <select type="text" name="mytext3[]" class="input" id="fertilizers1_sourceOfInput">
+                                    <option value="">Select Source Of Input</option><option value="same village">From same village shop</option><option value="nearby town">From nearby town</option><option value="Owned">Owned(Seed for FYM)</option>
+                                </select>
+                                <input type="text" name="mytext4[]" class="input" id="fertilizers1_nameAndPlace" placeholder="Enter Name & Place">
+                                <!-- <input -->
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- <br>
+                    <br>
+                    <div class="fertilizers2">
+                        <label for="ii" id="label" class="fertilizers2_label">ii) </label>
+                        <input type="number" class="input" id="fertilizers2_quantity" placeholder="Enter Quantity">
+                        <input type="number" class="input" id="fertilizers2_unitPrice" placeholder="Enter Unit Price">
+                        <input type="text" class="input" id="fertilizers2_sourceOfInput" placeholder="Enter Source Of Input">
+                        <input type="text" class="input" id="fertilizers2_nameAndPlace" placeholder="Enter Name & Place">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="fertilizers3">
+                        <label for="iii" id="label" class="fertilizers3_label">iii)</label>
+                        <input type="number" class="input" id="fertilizers3_quantity" placeholder="Enter Quantity">
+                        <input type="number" class="input" id="fertilizers3_unitPrice" placeholder="Enter Unit Price">
+                        <input type="text" class="input" id="fertilizers3_sourceOfInput" placeholder="Enter Source Of Input">
+                        <input type="text" class="input" id="fertilizers3_nameAndPlace" placeholder="Enter Name & Place">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="fertilizers4">
+                        <label for="iv" id="label" class="fertilizers4_label">iv) </label>
+                        <input type="number" class="input" id="fertilizers4_quantity" placeholder="Enter Quantity">
+                        <input type="number" class="input" id="fertilizers4_unitPrice" placeholder="Enter Unit Price">
+                        <input type="text" class="input" id="fertilizers4_sourceOfInput" placeholder="Enter Source Of Input">
+                        <input type="text" class="input" id="fertilizers4_nameAndPlace" placeholder="Enter Name & Place">
+                    </div> -->
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="plantProtection">
+                    <label for="plantProtection" id="label" class="plantProtection_label">Plant Protection chemicals(ml or g): <b class="small_caution">*Mention liquid/powder formulations</b></label>
+                    <br>
+                    <br>
+                    <div class="plantProtection1">
+                        <!-- <button class="add_plantProtection_field">Add New Field &nbsp;
+                            <span style="font-size:16px; font-weight:bold;">+ </span>
+                        </button> -->
+                        <br>
+                        <br>
+                        <!-- <label for="i" class="plantProtection1_label" id="label"> </label>
+                        <input type="number" class="input" id="plantProtection1_quantity" placeholder="Enter Quantity">
+                        <input type="number" class="input" id="plantProtection1_unitPrice" placeholder="Enter Unit Price">
+                        <input type="text" class="input" id="plantProtection1_sourceOfInput" placeholder="Enter Source Of Input">
+                        <input type="text" class="input" id="plantProtection1_nameAndPlace" placeholder="Enter Name & Place"> -->
+                        <div class="container2">
+                            <button class="add_plant_field">Add New Field &nbsp;
+                                <span style="font-size:16px; font-weight:bold;">+ </span>
+                            </button>
+                            <div>
+                                <input type="text" name="plantText0[]" class="input" id="plantProtection1_quan" placeholder="Enter Name" >
+                                <input type="number" name="plantText1[]" class="input" id="plantProtection1_quantity" placeholder="Enter Quantity">
+                                <input type="number" name="plantText2[]" class="input" id="plantProtection1_unitPrice" placeholder="Enter Unit Price">
+                                <!-- <input type="text" name="plantText3[]" class="input" id="plantProtection1_sourceOfInput" placeholder="Enter Source Of Input"> -->
+                                <select type="text" name="plantText3[]" class="input" id="plantProtection1_sourceOfInput">
+                                    <option value="">Select Source Of Input</option><option value="same village">From same village shop</option><option value="nearby town">From nearby town</option><option value="Owned">Owned(Seed for FYM)</option>
+                                </select>
+                                <input type="text" name="plantText4[]" class="input" id="plantProtection1_nameAndPlace" placeholder="Enter Name & Place">
+                                <!-- <input -->
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <!-- <div class="plantProtection2">
+                        <label for="ii" class="plantProtection2_label" id="label">ii) </label>
+                        <input type="number" class="input" id="plantProtection2_quantity" placeholder="Enter Quantity">
+                        <input type="number" class="input" id="plantProtection2_unitPrice" placeholder="Enter Unit Price">
+                        <input type="text" class="input" id="plantProtection2_sourceOfInput" placeholder="Enter Source of Input">
+                        <input type="text" class="input" id="plantProtection2_nameAndPlace" placeholder="Enter Name & Place">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="plantProtection3">
+                        <label for="iii" class="plantProtection3_label" id="label">iii) </label>
+                        <input type="number" class="input" id="plantProtection3_quantity" placeholder="Enter Quantity">
+                        <input type="number" class="input" id="plantProtection3_unitPrice" placeholder="Enter Unit Price">
+                        <input type="text" class="input" id="plantProtection3_sourceOfInput" placeholder="Enter Source Of Input">
+                        <input type="text" class="input" id="plantProtection3_nameAndPlace" placeholder="Enter Name & Place">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="plantProtection4">
+                        <label for="iv" class="plantProtection4_label" id="label">iv) </label>
+                        <input type="number" class="input" id="plantProtection4_quantity" placeholder="Enter Quantity">
+                        <input type="number" class="input" id="plantProtection4_unitPrice" placeholder="Enter Unit Price">
+                        <input type="text" class="input" id="plantProtection4_sourceOfInput" placeholder="Enter Source Of Input">
+                        <input type="text" class="input" id="plantProtection4_nameAndPlace" placeholder="Enter Name & Place">
+                    </div> -->
+                </div>
+                <br>
+                <br>
+                <div class="herbicides">
+                    <label for="herbicides" class="herbicides_label" id="label">Herbicides (ml or g): </label>
+                    <br>
+                    <br>
+                    <div class="herbicides1">
+                        <!-- <label for="i" class="herbicides1_label" id="label">i) </label>
+                        <input type="number" class="input" id="herbicides1_quantity" placeholder="Enter Quantity">
+                        <input type="number" class="input" id="herbicides1_unitPrice" placeholder="Enter Unit Price">
+                        <input type="text" class="input" id="herbicides1_sourceOfInput" placeholder="Enter Source Of Input">
+                        <input type="text" class="input" id="herbicides1_nameAndPlace" placeholder="Enter Name & Place"> -->
+                        <div class="container3">
+                            <button class="add_herbicides_field">Add New Field &nbsp;
+                                <span style="font-size:16px; font-weight:bold;">+ </span>
+                            </button>
+                            <div>
+                                <input type="text" name="herbicidesText0[]" class="input" id="herbicides1_quan" placeholder="Enter Name" >
+                                <input type="number" name="herbicidesText1[]" class="input" id="herbicides1_quantity" placeholder="Enter Quantity">
+                                <input type="number" name="herbicidesText2[]" class="input" id="herbicides1_unitPrice" placeholder="Enter Unit Price">
+                                <!-- <input type="text" name="herbicidesText3[]" class="input" id="herbicides1_sourceOfInput" placeholder="Enter Source Of Input"> -->
+                                <select type="text" name="herbicidesText3[]" class="input" id="herbicides1_sourceOfInput">
+                                    <option value="">Select Source Of Input</option><option value="same village">From same village shop</option><option value="nearby town">From nearby town</option><option value="Owned">Owned(Seed for FYM)</option>
+                                </select>
+                                <input type="text" name="herbicidesText4[]" class="input" id="herbicides1_nameAndPlace" placeholder="Enter Name & Place">
+                                <!-- <input -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <br>
+                    <br>
+                    <div class="herbicides2">
+                        <label for="ii" class="herbicides2_label" id="label">ii) </label>
+                        <input type="number" class="input" id="herbicides2_quantity" placeholder="Enter Quantity">
+                        <input type="number" class="input" id="herbicides2_unitPrice" placeholder="Enter Unit Price">
+                        <input type="text" class="input" id="herbicides2_sourceOfInput" placeholder="Enter Source Of Input">
+                        <input type="text" class="input" id="herbicides2_nameAndPlace" placeholder="Enter Name & Place">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="herbicides3">
+                        <label for="iii" class="herbicides3_label" id="label">iii) </label>
+                        <input type="number" class="input" id="herbicides3_quantity" placeholder="Enter Quantity">
+                        <input type="number" class="input" id="herbicides3_unitPrice" placeholder="Enter Unit Price">
+                        <input type="text" class="input" id="herbicides3_sourceOfInput" placeholder="Enter Source Of Input">
+                        <input type="text" class="input" id="herbicides3_nameAndPlace" placeholder="Enter Name & Place">
+                    </div>-->
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="others">
+                    <label for="others" class="others_label" id="label">Others: </label>
+                    <input type="number" class="input" id="others_quantity" placeholder="Enter Quantity" name="oq">
+                    <input type="number" class="input" id="others_unitPrice" placeholder="Enter Unit Price" name="ou">
+                    <!-- <input type="text" class="input" id="others_sourceOfInput" placeholder="Enter Source Of Input" name="os"> -->
+                    <select type="text" class="input" id="others_sourceOfInput" name="os">
+                        <option value="">Select Source Of Input</option><option value="same village">From same village shop</option><option value="nearby town">From nearby town</option><option value="Owned">Owned(Seed for FYM)</option>
+                    </select>
+                    <input type="text" class="input" id="others_nameAndPlace" placeholder="Enter Name & Place" name="oa">
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="submit_button">
+                    <div class="submit">
+                        <button type="submit" class="next_button" id="next">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>  
+    <br>
+    <br>
+    <br>
+    <br><br><br>
+
+
+
+    <script>
+
+
+            // document.getElementById("tot").value = parseInt(localStorage.getItem("item"));
+
+            // var number = localStorage.getItem("x1");
+            // var container = document.getElementById("container");
+
+
+
+$(document).ready(function() {
+            var max_fields = 4;
+            var wrapper = $(".container1");
+            var add_button = $(".add_form_field");
+
+            var x = 1;
+            $(add_button).click(function(e) {
+                e.preventDefault();
+                if (x < max_fields) {
+                    x++;
+                    $(wrapper).append('<div> <br><br> <a href="#" class="delete">&#128465;</a><input type="text" class="input" id="fertilizers2_quan" name="mytext0[]" placeholder="Enter Name"  /><input type="number" class="input" id="fertilizers2_quantity" name="mytext1[]" placeholder="Enter Quantity" / ><input type="number" name="mytext2[]" class="input" id="fertilizers2_unitPrice" placeholder="Enter Unit Price" /> <select type="text" name="mytext3[]" class="input" id="fertilizers2_sourceOfInput"><option value="">Select Source Of Input</option><option value="same village">From same village shop</option><option value="nearby town">From nearby town</option><option value="Owned">Owned(Seed for FYM)</option></select> <input type="text" name="mytext4[]" class="input" id="fertilizers2_nameAndPlace" placeholder="Enter Name & Place" /> </div>'); //add input box
+                } else {
+                    alert('You Reached the limits')
+                }
+            });
+
+            $(wrapper).on("click", ".delete", function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+            })
+        });
+
+
+
+        $(document).ready(function() {
+            var max_fields = 4;
+            var wrapper = $(".container2");
+            var add_button1 = $(".add_plant_field");
+
+            var x = 1;
+            $(add_button1).click(function(e) {
+                e.preventDefault();
+                if (x < max_fields) {
+                    x++;
+                    $(wrapper).append('<div> <br><br> <a href="#" class="delete">&#128465;</a><input type="text" class="input" id="plantProtection2_quan" name="plantText0[]" placeholder="Enter Name"  /> <input type="number" class="input" id="plantProtection2_quantity" name="plantText1[]" placeholder="Enter Quantity" / ><input type="number" name="plantText2[]" class="input" id="plantProtection2_unitPrice" placeholder="Enter Unit Price" /><select type="text" name="plantText3[]" class="input" id="plantProtection2_sourceOfInput"><option value="">Select Source Of Input</option><option value="same village">From same village shop</option><option value="nearby town">From nearby town</option><option value="Owned">Owned(Seed for FYM)</option></select> <input type="text" name="plantText4[]" class="input" id="plantProtection2_nameAndPlace" placeholder="Enter Name & Place" /> </div>'); //add input box
+                } else {
+                    alert('You Reached the limits')
+                }
+            });
+
+            $(wrapper).on("click", ".delete", function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+            })
+        });
+
+
+
+
+
+        $(document).ready(function() {
+            var max_fields = 3;
+            var wrapper = $(".container3");
+            var add_button2 = $(".add_herbicides_field");
+
+            var x = 1;
+            $(add_button2).click(function(e) {
+                e.preventDefault();
+                if (x < max_fields) {
+                    x++;
+                    $(wrapper).append('<div> <br><br> <a href="#" class="delete">&#128465;</a><input type="text" class="input" id="herbicides2_quan" name="herbicidesText0[]" placeholder="Enter Name"  /> <input type="number" class="input" id="herbicides2_quantity" name="herbicidesText1[]" placeholder="Enter Quantity" / ><input type="number" name="herbicidesText2[]" class="input" id="herbicides2_unitPrice" placeholder="Enter Unit Price" /><select type="text" name="herbicidesText3[]" class="input" id="herbicides2_sourceOfInput"><option value="">Select Source Of Input</option><option value="same village">From same village shop</option><option value="nearby town">From nearby town</option><option value="Owned">Owned(Seed for FYM)</option></select><input type="text" name="herbicidesText4[]" class="input" id="herbicides2_nameAndPlace" placeholder="Enter Name & Place" /> </div>'); //add input box
+                } else {
+                    alert('You Reached the limits')
+                }
+            });
+
+            $(wrapper).on("click", ".delete", function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+            })
+        });
+
+
+    </script>
+</body>
+</html>

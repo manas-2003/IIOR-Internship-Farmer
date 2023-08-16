@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Farm Holding{% endblock %}</title>
+
+    <style>
+        body{
+            background: rgb(17,7,12);
+            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+        }
+        .fixed-header, .fixed-footer{
+            width: 100%;
+            position: fixed;
+            background: rgb(35, 68, 101);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+            font-size: larger;
+            display: inline-block;
+        }
+        .fixed-header{
+            top: 0;
+        }
+        div.fixed-header{
+            height: 120px;
+        }
+        .fixed-footer{
+            bottom: 0;
+        }
+        .container{
+            width: 80%;
+            margin: 0 auto; /* Center the DIV horizontally */
+
+        }
+        .icar{
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            margin-right: 1000px;
+            margin-top: -100px;
+            margin-bottom: 15px;
+        }
+        img.iior{
+            height: 100px;
+            width: 100px;
+            top: 1.5%;
+            left: 80%;
+            position: fixed;
+            margin: auto;
+        }
+
+        #rec-box{
+            top: 50%;
+            width: 1450px;
+            height: 300px;
+            border:30px;
+            margin: 0 auto;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        form.fixed-form{
+            margin-top: -150px;
+            margin-left: -4px;
+        }
+
+        .table-head{
+            /* top: 40%; */
+            border:30px;
+            margin: 0 auto;
+            margin-top: 290px;
+            margin-left: 80px;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            /* cursor: pointer; */
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-85:before {
+            content: "";
+            /* background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+            ); */
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing-button-85 {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgb(255, 255, 255);
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        .label-text{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+            margin-left: 90px;
+            margin-bottom: -80px;
+        }
+        .input-text1-1{
+            height: 24px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 109px;
+            font: 12px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text1-2{
+            height: 24px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 76px;
+            font: 12px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text1-3{
+            height: 24px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 63px;
+            font: 12px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text1-4{
+            height: 24px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 43px;
+            font: 12px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text2-1{
+            height: 24px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 110px;
+            font: 12px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text2-2{
+            height: 24px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 76px;
+            font: 12px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text2-3{
+            height: 24px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 63px;
+            font: 12px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text2-4{
+            height: 24px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 43px;
+            font: 12px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text3-1{
+            height: 34px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 150px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text3-2{
+            height: 34px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 76px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text3-3{
+            height: 34px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 63px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        .input-text3-4{
+            height: 34px;
+            width: 180px;
+            border-radius: 10px;
+            margin-left: 293px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+
+        .next-btn{
+            margin:0 auto;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        #input{
+            border: 3px solid;
+            border-radius: 10px;
+            /* height: 20px;
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        #input:hover{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        #input:focus{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+        #add11{
+            border: 3px solid;
+            border-radius: 8px;
+            /* height: 20px;
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        #add12{
+            border: 3px solid;
+            border-radius: 8px;
+            /* height: 20px;
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+            /* width: 100px; */
+        }
+
+        #add21{
+            border: 3px solid;
+            border-radius: 8px;
+            /* height: 20px;
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+            /* width: 100px; */
+        }
+
+        #add22{
+            border: 3px solid;
+            border-radius: 8px;
+            /* height: 20px;
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+            /* width: 100px; */
+        }
+
+        #add31{
+            background-color: rgba(139, 141, 139, 0.635);
+            border: 1px solid #d5d9d9;
+            border-radius: 8px;
+            box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+            box-sizing: border-box;
+            color: #0f1111;
+            /* cursor: pointer; */
+            display: inline-block;
+            /* font-family: "Amazon Ember",sans-serif; */
+            /* font-size: 13px; */
+            line-height: 29px;
+            padding: 0 10px 0 11px;
+            position: relative;
+            /* text-align: center; */
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            /* width: 100px; */
+        }
+
+        #add32{
+            background-color: rgba(139, 141, 139, 0.635);
+            border: 1px solid #d5d9d9;
+            border-radius: 8px;
+            box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+            box-sizing: border-box;
+            color: #0f1111;
+            /* cursor: pointer; */
+            display: inline-block;
+            /* font-family: "Amazon Ember",sans-serif; */
+            /* font-size: 13px; */
+            line-height: 29px;
+            padding: 0 10px 0 11px;
+            position: relative;
+            /* text-align: center; */
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            /* width: 100px; */
+        }
+
+        #output1{
+            border: 3px solid;
+            border-radius: 9px;
+            /* height: 20px;
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        #output2{
+            border: 3px solid;
+            border-radius: 9px;
+            /* height: 20px;
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        #output3{
+            border: 3px solid;
+            border-radius: 9px;
+            /* height: 20px;
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+            /* width: 100px; */
+        }
+
+        /* #input:hover{
+            background-color: #f7fafa;
+        }
+
+        #input:focus{
+            background-color: #f7fafa;
+            border-color: #008296;
+            box-shadow: rgb(3, 252, 11) 1px 4px 5px 0;
+            outline: 0;
+        } */
+
+        .caution{
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 20px;
+            color: rgb(255, 0, 0);
+        }
+
+        .caution-text{
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+
+        .button-33 {
+            background-color: #90e860;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+            color: green;
+            cursor: pointer;
+            display: inline-block;
+            font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+            padding: 7px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 250ms;
+            border: 0;
+            font-size: 24px;
+            width: 100px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-33:hover {
+            box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+            transform: scale(1.05) rotate(-1deg);
+        }
+        #add1 {
+            align-self: center;
+            margin: 0 auto;
+            margin-left: 360px;
+            background-color: rgba(26, 247, 6, 0.718);
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #add1:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #add1:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #add2 {
+            align-self: center;
+            background-color: rgba(26, 247, 6, 0.718);
+            margin: 0 auto;
+            margin-left: 200px;
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #add2:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #add2:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #add3 {
+            align-self: center;
+            background-color: rgba(26, 247, 6, 0.718);
+            margin: 0 auto;
+            margin-left: 415px;
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #add3:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #add3:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #add1row {
+            align-self: center;
+            background-color: rgba(26, 247, 6, 0.718);
+            margin: 0 auto;
+            margin-left: 10px;
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 10px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #add1row:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #add1row:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        #add2row {
+            align-self: center;
+            background-color: rgba(26, 247, 6, 0.718);
+            margin: 0 auto;
+            margin-left: 10px;
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Neucha, sans-serif;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font: 10px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        #add2row:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        #add2row:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+
+        #output1row{
+            height: 34px;
+            width: 100px;
+            border-radius: 10px;
+            margin-left: 30px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+        #output2row{
+            height: 34px;
+            width: 100px;
+            border-radius: 10px;
+            margin-left: 30px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            font-weight: bolder;
+        }
+
+        /* nav a{
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 25px;
+
+        } */
+        /* top: 50%;
+        left: 50%;
+        position: fixed;
+        opacity:0.09;
+        margin: auto; */
+        #allign{
+            margin-left: 140px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fixed-header">
+        <div class="container">
+            <nav>
+                <p>ICAR - INDIAN INSTITUTE OF OILSEEDS RESEARCH</p>
+                <p>Schedule for collecting the FPO farmers details</p>
+            </nav>
+        </div>
+        <img src="https://icar.org.in/files/icarlogo.png" alt="" class="icar">
+        <img src="https://icar-iior.org.in/sites/default/files/iior-logo-157x227.png" alt="" class="iior">
+    </div>
+    <br><br><br>
+    <form action="farmerholdings" method="post" class="fixed-form">
+        <h3 class="table-head">&#x2162.  Farm Holding </h3>
+        <div id="rec-box" class="button-85" role="button">
+            <br>
+            <br>
+            <label for="type-of-land" class="label-text">Type Of Land</label>
+            <label for="owned-acres" class="label-text">Owned(Acres)</label>
+            <label for="leased-in-acres" class="label-text" id="allign">Leased in(Acres)</label>
+            <label for="soil-type" class="label-text" id="allign">Soil Type</label>
+            <label for="total-area-acres" class="label-text" id="allign">Total Area(acres)</label>
+            <br>
+            <br>
+            <label for="rainfield" class="label-text">Rainfield: </label>
+            <input type="number" id="add11" placeholder="Enter Owned(Acres)" class="input-text1-1" name="ownedrain" step="any">
+            <input type="number" id="add21" placeholder="Enter Leased in(Acres)" class="input-text1-2" name="leasedrain" step="any">
+            <input type="text" id="input" placeholder="Enter Soil Type" class="input-text1-3" name="rainsoil">
+            <!-- <input type="number" id="add31" placeholder="Enter Total Area(acres)" class="input-text1-4"> -->
+            <input type="button" id="add1row" onclick="functionadd1row()" value="ADD">
+            <input type="number" id="output1row" placeholder="TOTAL" name="totalrain" step="any">
+            <br>
+            <br>
+            <label for="irrigated" class="label-text">Irrigated: </label>
+            <input type="number" id="add12" placeholder="Enter Owned(Acres)" class="input-text2-1" name="ownedirrigated" step="any">
+            <input type="number" id="add22" placeholder="Enter Leased in(Acres)" class="input-text2-2" name="leasedirrigated" step="any">
+            <input type="text" id="input" placeholder="Enter Soil Type" class="input-text2-3" name="irrigatedsoil">
+            <!-- <input type="number" id="add32" placeholder="Enter Total Area(acres)" class="input-text2-4"> -->
+            <input type="button" id="add2row" onclick="functionadd2row()" value="ADD" >
+            <input type="number" id="output2row" placeholder="TOTAL" name="totalirrgated" step="any">
+            <br>
+            <br>
+            <label for="total" class="label-text">Total: </label>
+            <input type="text" id="output1" class="input-text3-1" placeholder="Press ADD" name="ownedtotal">
+            <input type="text" id="output2" class="input-text3-2" placeholder="Press ADD" name="leasedtotal">
+            <input type="text" id="output3" class="input-text3-4" placeholder="Press ADD" name="Total">
+            <br>
+            <br>
+            <button id ="add1" type="button" onclick="functionAdd1()">ADD</button>
+            <button id="add2" type="button" onclick="functionAdd2()">ADD</button>
+            <button id="add3" type="button" onclick="functionAdd3()">ADD</button>
+            <p id="idOne1">
+            <p id="idOne2">
+            <p id="answer">
+            </p>
+            <p id="idTwo1">
+            <p id="idTwo2">
+            <p id="answer">
+            </p>
+            <p id="idThree1">
+            <p id="idThree2">
+            <p id="answer">
+            </p>
+            <p id="idrow11">
+            <p id="idrow12">
+            <p id="idrow13">
+            <p id="answer">
+            </p>
+            <p id="idrow21">
+            <p id="idrow22">
+            <p id="idrow23">
+            <p id="answer">
+            </p>
+
+            <!-- <button type="button" id="add1" onclick="add1()">Add</button> -->
+        </div>
+        <div class="caution">
+            <label for="caution" class="caution-text">*Check the fields again before going to next page*</label>
+        </div>
+        <div class="next-btn">
+            <a><button class="button-33" role="button">Next</button></a>
+        </div>
+    </form>
+
+    <div class="fixed-footer">
+        <div class="container">Copyright &copy; ICAR</div>
+    </div>
+
+    <script>
+        function functionAdd1() {
+            var num1;
+            var num2;
+            if(document.getElementById("add11").value == "")
+            {
+                num1 = 0;
+            }
+            else{
+                num1 = document.getElementById("add11").value;
+            }
+
+            if(document.getElementById("add12").value == "")
+            {
+                num2 = 0;
+            }
+            else{
+                num2 = document.getElementById("add12").value
+            }
+            // var num2 = document.getElementById("add12").value;
+            var result1;
+            // result1 = Number(num1) + Number(num2);
+            var n = parseFloat(num1);
+            var a = parseFloat(num2);
+            var firstdeci = (n - parseInt(n)).toFixed(3);
+            var seconddeci = (a - parseInt(a)).toFixed(3);
+            var total = parseFloat(parseInt(n)+parseInt(a));
+            var x = Number(firstdeci) + Number(seconddeci);
+            total = total + parseInt(x/0.4);
+            total = (total + (x%0.4)).toFixed(2);
+            result1 = total;
+
+            document.getElementById("idOne1").value = num1;
+            document.getElementById("idOne2").value = num2;
+            document.getElementById("output1").value = result1;
+
+        }
+
+        function functionAdd2() {
+            var num1;
+            if(document.getElementById("add21").value == "")
+            {
+                num1 = 0;
+            }
+            else{
+                num1 = document.getElementById("add21").value;
+            }
+            var num2;
+            if(document.getElementById("add22").value == "")
+            {
+                num2 = 0;
+            }
+            else{
+                num2 = document.getElementById("add22").value;
+            }
+            var result2;
+            // result2 = Number(num1) + Number(num2);
+            var n = parseFloat(num1);
+            var a = parseFloat(num2);
+            var firstdeci = (n - parseInt(n)).toFixed(3);
+            var seconddeci = (a - parseInt(a)).toFixed(3);
+            var total = parseFloat(parseInt(n)+parseInt(a));
+            var x = Number(firstdeci) + Number(seconddeci);
+            total = total + parseInt(x/0.4);
+            total = (total + (x%0.4)).toFixed(2);
+            result2 = total;
+
+
+            document.getElementById("idTwo1").value = num1;
+            document.getElementById("idTwo2").value = num2;
+            document.getElementById("output2").value = result2;
+        }
+
+        function functionAdd3() {
+            var num1;
+            if(document.getElementById("output1row").value == "")
+            {
+                num1 = 0;
+            }
+            else{
+                num1 = document.getElementById("output1row").value;
+            }
+            var num2;
+            if(document.getElementById("output2row").value == "")
+            {
+                num2 = 0;
+            }
+            else{
+                num2 = document.getElementById("output2row").value;
+            }
+            var result3;
+            // result3 = Number(num1) + Number(num2);
+            var n = parseFloat(num1);
+            var a = parseFloat(num2);
+            var firstdeci = (n - parseInt(n)).toFixed(3);
+            var seconddeci = (a - parseInt(a)).toFixed(3);
+            var total = parseFloat(parseInt(n)+parseInt(a));
+            var x = Number(firstdeci) + Number(seconddeci);
+            total = total + parseInt(x/0.4);
+            total = (total + (x%0.4)).toFixed(2);
+            result3 = total;
+
+            document.getElementById("idThree1").value = num1;
+            document.getElementById("idThree2").value = num2;
+            document.getElementById("output3").value = result3;
+        }
+
+        function functionadd1row(){
+            var num1;
+            if(document.getElementById("add11").value == "")
+            {
+                num1 = 0;
+            }
+            else{
+                num1 = document.getElementById("add11").value;
+            }
+            var num2;
+            if(document.getElementById("add21").value == "")
+            {
+                num2 = 0;
+            }
+            else{
+                num2 = document.getElementById("add21").value;
+            }
+            // var num3 = document.getElementById("add31").value;
+            var result1row;
+            // result1row = Number(num1) + Number(num2);
+            document.getElementById("idrow11").value = num1;
+            document.getElementById("idrow12").value = num2;
+
+            var n = parseFloat(num1);
+            var a = parseFloat(num2);
+            var firstdeci = (n - parseInt(n)).toFixed(3);
+            var seconddeci = (a - parseInt(a)).toFixed(3);
+            var total = parseFloat(parseInt(n)+parseInt(a));
+            var x = Number(firstdeci) + Number(seconddeci);
+            total = total + parseInt(x/0.4);
+            total = (total + (x%0.4)).toFixed(2);
+            result1row = total;
+            // document.getElementById("idrow13").value = num3;
+            document.getElementById("output1row").value = result1row;
+        }
+
+        function functionadd2row(){
+            var num1;
+            if(document.getElementById("add12").value == "")
+            {
+                num1 = 0;
+            }
+            else{
+                num1 = document.getElementById("add12").value;
+            }
+            var num2;
+            if(document.getElementById("add22").value == "")
+            {
+                num2 = 0;
+            }
+            else{
+                num2 = document.getElementById("add22").value;
+            }
+            // var num3 = document.getElementById("add32").value;
+            var result1row;
+            // result2row = Number(num1) + Number(num2);
+            document.getElementById("idrow21").value = num1;
+            document.getElementById("idrow22").value = num2;
+            var n = parseFloat(num1);
+            var a = parseFloat(num2);
+            var firstdeci = (n - parseInt(n)).toFixed(3);
+            var seconddeci = (a - parseInt(a)).toFixed(3);
+            var total = parseFloat(parseInt(n)+parseInt(a));
+            var x = Number(firstdeci) + Number(seconddeci);
+            total = total + parseInt(x/0.4);
+            total = (total + (x%0.4)).toFixed(2);
+            result2row = total;
+            // document.getElementById("idrow23").value = num3;
+            document.getElementById("output2row").value = result2row;
+        }
+    </script>
+
+</body>
+</html>

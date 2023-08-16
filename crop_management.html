@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Crop Management Details{% endblock %}</title>
+
+    <style>
+        body{
+            background: rgb(17,7,12);
+            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+        }
+        .fixed-header, .fixed-footer{
+            width: 100%;
+            position: fixed;
+            background: rgb(35, 68, 101);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+            font-size: larger;
+            display: inline-block;
+        }
+        .fixed-header{
+            top: 0;
+        }
+        div.fixed-header{
+            height: 120px;
+        }
+        .fixed-footer{
+            bottom: 0;
+        }
+        .container{
+            width: 80%;
+            margin: 0 auto; /* Center the DIV horizontally */
+
+        }
+        .icar{
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            margin-right: 1000px;
+            margin-top: -100px;
+            margin-bottom: 15px;
+        }
+        img.iior{
+            height: 100px;
+            width: 100px;
+            top: 1.5%;
+            left: 80%;
+            position: fixed;
+            margin: auto;
+        }
+
+        #rec-box{
+            top: 50%;
+            width: 3010px;
+            height: 750px;
+            border:30px;
+            margin: 0 auto;
+            margin-top: 30px;
+            margin-left: 30px;
+            border-radius: 10px;
+        }
+
+        form.fixed-form{
+            margin-top: -110px;
+        }
+
+        .table-head{
+            /* top: 40%; */
+            border:30px;
+            margin: 0 auto;
+            margin-top: 290px;
+            margin-left: 40px;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-size: 30px;
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            /* cursor: pointer; */
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-85:before {
+            content: "";
+            /* background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+            ); */
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing-button-85 {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgb(255, 255, 255);
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        .label-text{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            margin-left: 40px;
+            margin-bottom: -80px;
+        }
+
+        .next-btn{
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #input{
+            border: 3px solid;
+            border-radius: 10px;
+            /* height: 20px;
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        #input:hover{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        #input:focus{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+
+        #input1{
+            border: 3px solid;
+            border-radius: 10px;
+            margin-top: 35px;
+            width: 200px;
+            /* height: 20px;
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        #input1:hover{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        #input1:focus{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        .caution{
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 20px;
+            color: rgb(255, 0, 0);
+        }
+
+        .caution-text{
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+
+        .button-33 {
+            background-color: #90e860;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+            color: green;
+            cursor: pointer;
+            display: inline-block;
+            font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+            padding: 7px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 250ms;
+            border: 0;
+            font-size: 24px;
+            width: 100px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-33:hover {
+            box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+        .line{
+            margin-top: 20px;
+            color: rgb(21, 227, 58);
+            border-radius: 20px;
+            opacity: 0.7;
+        }
+
+        .vl1{
+            border-left: 7px solid rgb(255, 225, 0);
+            height: 734px;
+            position: absolute;
+            left: 320px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+        .vl2{
+            border-left: 7px solid rgb(255, 225, 0);
+            height: 734px;
+            position: absolute;
+            left: 476px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.8;
+        }
+        .vl3{
+            border-left: 7px solid rgb(255, 225, 0);
+            height: 734px;
+            position: absolute;
+            left: 672px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+        .vl4{
+            border-left: 7px solid rgb(255, 225, 0);
+            height: 734px;
+            position: absolute;
+            left: 875px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+        .vl5{
+            border-left: 7px solid rgb(255, 225, 0);
+            height: 734px;
+            position: absolute;
+            left: 1056px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+        .vl6{
+            border-left: 7px solid rgb(255, 225, 0);
+            height: 734px;
+            position: absolute;
+            left: 1260px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+        .vl7{
+            border-left: 7px solid rgb(255, 225, 0);
+            height: 734px;
+            position: absolute;
+            left: 1470px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+        .vl8{
+            border-left: 7px solid rgb(255, 225, 0);
+            height: 734px;
+            position: absolute;
+            left: 1690px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+        .vl9{
+            border-left: 7px solid rgb(255, 225, 0);
+            height: 734px;
+            position: absolute;
+            left: 1920px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+        .vl10{
+            border-left: 7px solid rgb(255, 225, 0);
+            height: 734px;
+            position: absolute;
+            left: 2100px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+        .vl11{
+            border-left: 7px solid rgb(255, 225, 0);
+            height: 734px;
+            position: absolute;
+            left: 2260px;
+            top: 1%;
+            color: #50f90d;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+        .delete{
+            color: #4dff00;
+            font-size: larger;
+            font-weight: bolder;
+            margin-left: -2px;
+        }
+
+        .inputField1{
+            margin: 0 auto;
+            margin-left: 0px;
+            margin-top: 35px;
+            width: 200px;
+        }
+
+        
+        .inputField1_1{
+            margin: 0 auto;
+            margin-left: 10px;
+            width: 200px;
+        }
+        .inputField2{
+            margin-left: 90px;
+            width: 130px;
+        }
+        .inputField2_1{
+            margin-left: 90px;
+            width: 130px;
+        }
+        .inputField3{
+            margin-left: 10px;
+            width: 150px;
+        }
+        .inputField3_1{
+            margin-left: 10px;
+            width: 150px;
+        }
+        .inputField4{
+            margin-left: 60px;
+            width: 150px;
+        }
+        .inputField4_1{
+            margin-left: 60px;
+            width: 150px;
+        }
+        .inputField5{
+            margin-left: 30px;
+            width: 130px;
+        }
+        .inputField5_1{
+            margin-left: 30px;
+            width: 130px;
+        }
+        .inputField6{
+            margin-left: 49px;
+            width: 130px;
+        }
+        .inputField6_1{
+            margin-left: 49px;
+            width: 130px;
+        }
+        .inputField7{
+            margin-left: 65px;
+            width: 130px;
+        }
+        .inputField7_1{
+            margin-left: 65px;
+            width: 130px;
+        }
+        .inputField8{
+            margin-left: 80px;
+            width: 130px;
+        }
+        .inputField8_1{
+            margin-left: 80px;
+            width: 130px;
+        }
+        .inputField9{
+            margin-left: 70px;
+            width: 130px;
+        }
+        .inputField9_1{
+            margin-left: 70px;
+            width: 130px;
+        }
+        .inputField10{
+            margin-left: 120px;
+            width: 130px;
+        }
+        .inputField10_1{
+            margin-left: 90px;
+            width: 130px;
+        }
+        .inputField11{
+            margin-left: 40px;
+            width: 130px;
+        }
+        .inputField11_1{
+            margin-left: 40px;
+            width: 130px;
+        }
+        .inputField12{
+            margin-left: 30px;
+            width: 130px;
+        }
+        .inputField12_1{
+            margin-left: 30px;
+            width: 130px;
+        }
+        .add_form_field{
+            font-family: "Copperplate";
+            font-weight: bolder;
+            border-radius: 10px;
+            height: 35px;
+            margin-left: 60px;
+            background-color: #37ff00;
+        }
+        .add_form_field:hover{
+            box-shadow: rgba(9, 118, 241, 0.987) 0px 0px 0px 3px;
+            cursor: pointer;
+            transform: translate3d(0, 2px, 0);
+            background-color: rgb(234, 8, 255);
+        }
+
+
+        /* nav a{
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 25px;
+
+        } */
+        /* top: 50%;
+        left: 50%;
+        position: fixed;
+        opacity:0.09;
+        margin: auto; */
+    </style>
+</head>
+<body>
+
+    <div class="fixed-header">
+        <div class="container">
+            <nav>
+                <p>ICAR - INDIAN INSTITUTE OF OILSEEDS RESEARCH</p>
+                <p>Schedule for collecting the FPO farmers details</p>
+            </nav>
+        </div>
+        <img src="https://icar.org.in/files/icarlogo.png" alt="" class="icar">
+        <img src="https://icar-iior.org.in/sites/default/files/iior-logo-157x227.png" alt="" class="iior">
+    </div>
+    <br><br><br>
+<form name="add_skills" id="add_skills" class="fixed-form" action="/crop" method="post">
+        <h3 class="table-head">&#8550;.  Crop Management Details: </h3>
+        <div id="rec-box" class="button-85" role="button">
+            <!-- <br>
+            <br>
+            <label for="village" class="label-text">Village: </label>
+            <input id="input" type="text" placeholder="Enter Village Name" class="input-text1" name="village" required>
+            <br>
+            <br>
+            <label for="mandal" class="label-text">Mandal: </label>
+            <input id="input" type="text" placeholder="Enter Mandal Name" class="input-text2" name="mandal" required>
+            <br>
+            <br>
+            <label for="panchayat" class="label-text">Panchayat: </label>
+            <input id="input" type="text" placeholder="Enter Panchayat Name" class="input-text3" name="panchayat" required>
+            <br>
+            <br>
+            <label for="district" class="label-text">District: </label>
+            <input id="input" type="text" placeholder="Enter District Name" class="input-text4" name="district" required> -->
+            <br>
+            <br>
+            <label for="field/vegetable/orchar_crop" class="label-text">Field/vegetable/orchard Crop</label>
+            <p class="vl1"></p>
+            <label for="crop_name" class="label-text">Crop Name</label>
+            <p class="vl2"></p>
+            <label for="variety/hybrid_name" class="label-text">Variety/Hybrid Name</label>
+            <p class="vl3"></p>
+            <label for="area_sown" class="label-text">Area Sown(Acres)</label>
+            <p class="vl4"></p>
+            <label for="rainfed/irrigated" class="label-text">Rainfed/Irrigated</label>
+            <p class="vl5"></p>
+            <label for="source_of_irrigation" class="label-text">Source Of Irrigation</label>
+            <p class="vl6"></p>
+            <label for="method_of_irrigation" class="label-text">Method Of Irrigation</label>
+            <p class="vl7"></p>
+            <label for="production_quintals" class="label-text">Production(Quintals)</label>
+            <p class="vl8"></p>
+            <label for="unit_price_per_quintal" class="label-text">Unit Price Per Quintal</label>
+            <p class="vl9"></p>
+            <label for="mode_of_disposal" class="label-text">Mode Of Disposal</label>
+            <p class="vl10"></p>
+            <label for="sowing_month" class="label-text">Sowing Month</label>
+            <p class="vl11"></p>
+            <label for="harvesting_month" class="label-text">Harvesting Month</label>
+            <hr color="red" size="10" width="100%" class="line">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <div class="container1">
+                <button class="add_form_field">Add New Field &nbsp; 
+                    <span style="font-size:16px; font-weight:bold;">+ </span>
+                </button>
+                <br>
+                <br>
+            <div class="input_div_1">
+                <!-- <input type="text" name="mytext1[]" class="inputField1_1" id="input" required> -->
+                <select type="text" name="mytext1[]" class="inputField1_1" id="input" required>
+                    <option value="">Select Type</option>
+                    <option value="Field">Field</option>
+                    <option value="Vegetable">Vegetable</option>
+                    <option value="Orchard Crop">Orchard Crop</option>
+                </select>
+                <input type="text" name="mytext2[]" class="inputField2_1" id="input" required >
+                <input type="text" name="mytext3[]" class="inputField3_1" id="input">
+                <input type="text" name="mytext4[]" class="inputField4_1" id="input">
+                <!-- <input type="text" name="mytext5[]" class="inputField5_1" id="input"> -->
+                <select type="text" name="mytext5[]" class="inputField5_1" id="input">
+                    <option value="">Select Type</option><option value="Rainfed">Rainfed</option><option value="Irrigated">Irrigated</option>
+                </select>
+                <!-- <input type="text" name="mytext6[]" class="inputField6_1" id="input"> -->
+                <select type="text" name="mytext6[]" class="inputField6_1" id="input">
+                    <option value="">Source Of irrigation</option>
+                    <option value="Canal">Canal</option>
+                    <option value="Open well">Open well</option>
+                    <option value="Borewell">Borewell</option>
+                    <option value="River">River</option>
+                    <option value="Tank">Tank</option>
+                    <option value="Other">Other</option>
+                </select>
+                <!-- <input type="text" name="mytext7[]" class="inputField7_1" id="input"> -->
+                <select type="text" name="mytext7[]" class="inputField7_1" id="input">
+                    <option value="">Method Of Irrigation</option>
+                    <option value="Open channel">Open channel</option>
+                    <option value="Ridge and furrows">Ridge & furrows</option>
+                    <option value="Drip">Drip</option>
+                    <option value="Sprinkler">Sprinkler</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="text" name="mytext8[]" class="inputField8_1" id="input">
+                <input type="text" name="mytext9[]" class="inputField9_1" id="input">
+                <!-- <input type="text" name="mytext10[]" class="inputField10_1" id="input"> -->
+                <select type="text" name="mytext10[]" class="inputField10_1" id="input">
+                    <option value="">Mode of Disposal of Produce</option><option value="Buy back">Buy back</option><option value="Middle man">Middle man</option><option value="Market yard">Market yard</option><option value="Government">Government buying counters</option><option value="super markets">Selling to super markets</option><option value="Private">Private</option>
+                </select>
+                <!-- <input type="text" name="mytext11[]" class="inputField11_1" id="input"> -->
+                <select type="text" name="mytext11[]" class="inputField11_1" id="input">
+                    <option value="">Select Sowing Month</option><option value="January">January </option><option value="February">February</option><option value="March">March</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="August">August</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option>
+                </select>
+                <!-- <input type="text" name="mytext12[]" class="inputField12_1" id="input"> -->
+                <select type="text" name="mytext12[]" class="inputField12_1" id="input">
+                    <option value="">Select Harvesting Month</option><option value="January">January </option><option value="February">February</option><option value="March">March</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="August">August</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option>
+                </select>
+            </div>
+            <!-- <div class="input_div_2">
+                <input type="text" name="mytext2[]" class="input" id="input">
+            </div> -->
+    </div>
+
+        </div>
+        
+        <div class="caution">
+            <label for="caution" class="caution-text">*Check the fields again before going to next page*</label>
+        </div>
+        <div class="next-btn">
+            <a href=""><button class="button-33" role="button" name="submit" id="submit" onclick = "sampleFunction()">Next</button></a>
+        </div>
+    </form>
+
+    <div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
+    <div class="fixed-footer">
+        <div class="container">Copyright &copy; ICAR</div>        
+    </div>
+
+    
+
+
+    
+    
+    <script>
+        var x1 = 1;
+        $(document).ready(function() {
+            var max_fields = 10;
+            var wrapper = $(".container1");
+            var add_button = $(".add_form_field");
+
+            var x = 1;
+            $(add_button).click(function(e) {
+                e.preventDefault();
+                if (x < max_fields) {
+                    x++;
+                    $(wrapper).append('<div><a href="#" class="delete">&#128465;</a> <select type="text" name="mytext1[]" class=inputField1" id="input1" required><option value="">Select Type</option><option value="Field">Field</option><option value="Vegetable">Vegetable</option><option value="Orchard Crop">Orchard Crop</option><input type="text" name="mytext2[]" class="inputField2" id="input" required /><input type="text" name="mytext3[]" class="inputField3" id="input"/><input type="text" name="mytext4[]" class="inputField4" id="input"/><select type="text" name="mytext5[]" class="inputField5" id="input"><option value="">Select Type</option><option value="Rainfed">Rainfed</option><option value="Irrigated">Irrigated</option></select> </a><select type="text" name="mytext6[]" class="inputField6" id="input"><option value="">Source Of irrigation</option><option value="Canal">Canal</option><option value="Open well">Open well</option><option value="Borewell">Borewell</option><option value="River">River</option><option value="Tank">Tank</option><option value="Other">Other</option></select><select type="text" name="mytext7[]" class="inputField7" id="input"><option value="">Select Method of Irrigation</option><option value="Open channel">Open channel</option><option value="Ridge and furrows">Ridge & furrows</option><option value="Drip">Drip</option><option value="Sprinkler">Sprinkler</option><option value="Other">Other</option></select> <input type="text" name="mytext8[]" class="inputField8" id="input"/><input type="text" name="mytext9[]" class="inputField9" id="input"/><select type="text" name="mytext10[]" class="inputField10" id="input"><option value="">Mode of Disposal of Produce</option><option value="Buy back">Buy back</option><option value="Middle man">Middle man</option><option value="Market yard">Market yard</option><option value="Government">Government buying counters</option><option value="super markets">Selling to super markets</option><option value="Private">Private</option></select> <select type="text" name="mytext11[]" class="inputField11" id="input" ><option value="">Select Sowing Month</option><option value="January">January </option><option value="February">February</option><option value="March">March</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="August">August</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option></select> </a><select type="text" name="mytext12[]" class="inputField12" id="input"><option value="">Select Harvesting Month</option><option value="January">January </option><option value="February">February</option><option value="March">March</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="August">August</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option></select> </div>'); //add input box
+                    x1 = x;
+                } else {
+                    alert('You Reached the limits')
+                }
+            });
+
+            $(wrapper).on("click", ".delete", function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+                x1 = x;
+            })
+        });
+
+        function sampleFunction() 
+        {
+            alert("You have created "+x1+" fields");
+            localStorage.setItem("x1", x1);
+        }
+
+
+//         $('#submit').click(function(){            
+//            $.ajax({  
+//                 url:"/postskill",  
+//                 method:"POST",  
+//                 data:$('#add_skills').serialize(),  
+//                 success:function(data)  
+//                 {  alert(data)
+//                      $('#resultbox').html(data);  
+//                      $('#add_skills')[0].reset();  
+//                 }  
+//            });  
+//       }); 
+        
+    </script>
+</body>
+</html>

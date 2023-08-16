@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}General Information{% endblock %}</title>
+
+    <style>
+        body{
+            background: rgb(17,7,12);
+            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+        }
+        .fixed-header, .fixed-footer{
+            width: 100%;
+            position: fixed;
+            background: rgb(35, 68, 101);
+            padding: 10px 0;
+            color: #fff;
+            text-align: center;
+            font-weight: bolder;
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+            font-size: larger;
+            display: inline-block;
+        }
+        .fixed-header{
+            top: 0;
+        }
+        div.fixed-header{
+            height: 120px;
+        }
+        .fixed-footer{
+            bottom: 0;
+        }
+        .container{
+            width: 80%;
+            margin: 0 auto; /* Center the DIV horizontally */
+
+        }
+        img.icar{
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            margin-right: 1000px;
+            margin-top: -100px;
+            margin-bottom: 15px;
+        }
+        img.iior{
+            height: 100px;
+            width: 100px;
+            top: 1.5%;
+            left: 80%;
+            position: fixed;
+            margin: auto;
+        }
+
+        #rec-box{
+            width: 900px;
+            height: 410px;
+            border:30px;
+            margin: 0 auto;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        form.fixed-form{
+            margin-top: -110px;
+        }
+
+        .table-head{
+            /* top: 40%; */
+            border:30px;
+            margin: 0 auto;
+            margin-top: 270px;
+            margin-left: 280px;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            /* font: 20px Arial, Helvetica, sans-serif; */
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            /* cursor: pointer; */
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-85:before {
+            content: "";
+            /* background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+            ); */
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing-button-85 {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgb(255, 255, 255);
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        .label-text{
+            color: rgb(0, 0, 0);
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+            margin-left: 30px;
+            margin-bottom: -80px;
+        }
+        .input-text1{
+            height: 24px;
+            width: 380px;
+            border-radius: 10px;
+            margin-left: 120px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+        }
+        .input-text2{
+            height: 24px;
+            width: 380px;
+            border-radius: 10px;
+            margin-left: 177px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+        }
+        .input-text3{
+            height: 24px;
+            width: 380px;
+            border-radius: 10px;
+            margin-left: 306px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+        }
+        .input-text4{
+            height: 24px;
+            width: 380px;
+            border-radius: 10px;
+            margin-left: 180px;
+            font: 20px Arial, Helvetica, sans-serif;
+            font-family: "Copperplate Gothic Light";
+        }
+
+        .input-text5-1{
+            height: 24px;
+            width: 110px;
+            border-radius: 10px;
+            margin-left: 280px;
+            font-family: "Copperplate Gothic Light";
+            cursor: pointer;
+        }
+        .input-text5-2{
+            height: 24px;
+            width: 110px;
+            border-radius: 10px;
+            margin-left: 20px;
+            font-family: "Copperplate Gothic Light";
+            cursor: pointer;
+        }
+        .input-text5-3{
+            height: 24px;
+            width: 110px;
+            border-radius: 10px;
+            margin-left: 20px;
+            font-family: "Copperplate Gothic Light";
+            cursor: pointer;
+        }
+        .input-text6{
+            height: 24px;
+            width: 380px;
+            border-radius: 10px;
+            margin-left: 199px;
+            font-family: "Copperplate Gothic Light";
+            cursor: pointer;
+        }
+        .input-text7-1{
+            height: 24px;
+            width: 100px;
+            border-radius: 10px;
+            margin-left: 15px;
+            font-family: "Copperplate Gothic Light";
+            cursor: pointer;
+        }
+        .input-text7-2{
+            height: 24px;
+            width: 100px;
+            border-radius: 10px;
+            margin-left: 12px;
+            font-family: "Copperplate Gothic Light";
+            cursor: pointer;
+        }
+        .input-text8{
+            height: 24px;
+            width: 380px;
+            border-radius: 10px;
+            margin-left: 1px;
+            font-family: "Copperplate Gothic Light";
+            cursor: pointer;
+        }
+        .input-text9{
+            height: 24px;
+            width: 380px;
+            border-radius: 10px;
+            margin-left: 254px;
+            font-family: "Copperplate Gothic Light";
+            cursor: pointer;
+        }
+
+        .next-btn{
+            margin: 0 auto;
+            margin-top: 30px;
+            margin-left: 1300px;
+        }
+
+        #input{
+            border: 3px solid;
+            border-radius: 10px;
+            /* height: 20px; 
+            width: 220px; */
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: 15px;
+        }
+        #input:hover{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+        #input:focus{
+            /* border: 5px solid;
+            width: 232px; */
+            box-shadow: rgba(0, 200, 235, 0.832) 0px 7px 29px 0px;
+        }
+
+
+        .button-33 {
+            background-color: #90e860;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+            color: green;
+            cursor: pointer;
+            display: inline-block;
+            font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+            padding: 7px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 250ms;
+            border: 0;
+            font-size: 24px;
+            width: 100px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            margin-right: 100px;
+            margin-left: -150px;
+            margin-bottom: 30px;
+        }
+
+        .button-33:hover {
+            box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+
+        /* nav a{
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 25px;
+
+        } */
+        /* top: 50%;
+        left: 50%;
+        position: fixed;
+        opacity:0.09;
+        margin: auto; */
+    </style>
+</head>
+<body>
+
+    <div class="fixed-header">
+        <div class="container">
+            <nav>
+                <p>ICAR - INDIAN INSTITUTE OF OILSEEDS RESEARCH</p>
+                <p>Schedule for collecting the FPO farmers details</p>
+            </nav>
+        </div>
+        <img src="https://icar.org.in/files/icarlogo.png" alt="" class="icar">
+        <img src="https://icar-iior.org.in/sites/default/files/iior-logo-157x227.png" alt="" class="iior">
+    </div>
+    <form action="information" method="post" class="fixed-form">
+        <h3 class="table-head">&#8545;. General information</h3>
+        <div id="rec-box" class="button-85" role="button">
+            <br>
+            <label for="Name of FPO member" class="label-text">Name of FPO member: </label>
+            <input id="input" type="text" placeholder="Enter Name of FPO member" class="input-text1" name="Name_of_FPO_member" required>
+            <br>
+            <br>
+            <label for="Aadhar Number" class="label-text">Aadhar Number: </label>
+            <input id="input" type="text" placeholder="Enter Aadhar Number" class="input-text2" name="Aadhar_Number" required>
+            <br>
+            <br>
+            <label for="Age" class="label-text">Age: </label>
+            <input id="input" type="text" placeholder="Enter Age" class="input-text3" name="Age" required>
+            <br>
+            <br>
+            <label for="Mobile NUmber" class="label-text">Mobile NUmber: </label>
+            <input id="input" type="text" placeholder="Enter Mobile Number" class="input-text4" name="Mobile_NUmber" required>
+            <br>
+            <br>
+            <label for="Family" class="label-text">Family: </label>
+            <select id="input"  class="input-text5-1 "name="Familymale" required>
+               <option><h4>Male</h4</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+                <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+                <option value="10">10</option>
+       </select>
+            <select id="input" class="input-text5-2"  name="Familyfemale" required>
+               <option><h4>Female</h4</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+                <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+                <option value="10">10</option>
+       </select>
+             <select id="input" class="input-text5-3"  name="Familychil" required>
+               <option><h4>Children</h4</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+                <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+                <option value="10">10</option>
+       </select>
+       <br>
+       <br>
+         <label for="Group" class="label-text">Social Group: </label>
+            <select id="input"  class="input-text6 "name="Group" required>
+               <option><h1> Select Social Group</h1</option>
+              <option value="GEN">GEN</option>
+              <option value="OBC">OBC</option>
+              <option value="SC">SC</option>
+              <option value="ST">ST</option>
+       </select>
+            <br>
+            <br>
+            <label for="engaged" class="label-text">No. of family members engaged in agriculture: </label>
+            <select id="input"  class="input-text7-1 "name="engaged" required>
+               <option><h4>Male</h4</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+                <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+                <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+                <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+              <option value="34">34</option>
+                <option value="35">35</option>
+              <option value="36">36</option>
+              <option value="37">37</option>
+              <option value="38">38</option>
+              <option value="39">39</option>
+                <option value="40">40</option>
+
+       </select>
+            <select id="input" class="input-text7-2"  name="engagedfem" required>
+               <option><h4>Female</h4</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+                <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+                <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+                <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+              <option value="34">34</option>
+                <option value="35">35</option>
+              <option value="36">36</option>
+              <option value="37">37</option>
+              <option value="38">38</option>
+              <option value="39">39</option>
+                <option value="40">40</option>
+       </select>
+       <br>
+        <br>
+        <label for="Education_level" class="label-text">Education level of FPO member: </label>
+            <select id="input"  class="input-text8 "name="Education_level" required>
+               <option><h1> Select Education level</h1</option>
+              <option value="Illiterate">Illiterate</option>
+              <option value="Primary school">Primary school</option>
+              <option value="Secondary school ">Secondary school </option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Degree and Above">Degree and Above</option>
+       </select>
+        <br>
+        <br>
+         <label for="Religion" class="label-text">Religion: </label>
+            <select id="input"  class="input-text9 "name="Religion" required>
+               <option><h1> Select Religion</h1</option>
+              <option value="Hindu">Hindu</option>
+              <option value="Muslim">Muslim</option>
+              <option value="Christian">Christian </option>
+              <option value="Others">Others</option>
+            </select>
+            <br>
+            <br>
+
+
+        </div>
+        <div class="next-btn">
+            <a><button class="button-33" role="button">Next</button></a>
+        </div>
+    </form>
+
+    <div class="fixed-footer">
+        <div class="container">Copyright &copy; ICAR</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Team{% endblock %}</title>
+  <!--     
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+      rel="stylesheet"
+    /> -->
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      flex: 1;
+      max-width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .logo img {
+      max-width: 100%;
+      height: auto;
+      /* margin-left: 30px; */
+      max-height: 120px;
+      /* Adjust the value as needed */
+    }
+
+    .text {
+      flex: 2;
+      text-align: center;
+    }
+
+    .text p {
+      font-size: 20px;
+      /* Adjust the value as needed */
+    }
+
+    .text p:first-child {
+      font-weight: bold;
+    }
+
+    @media (min-width: 576px) {
+
+      /* Medium screens */
+      .logo {
+        flex: 0 0 50%;
+      }
+
+      .text {
+        flex: 1;
+      }
+    }
+
+    @media (min-width: 768px) {
+
+      /* Large screens */
+      .logo {
+        flex: 0 0 33.33%;
+      }
+
+      .text {
+        flex: 1;
+      }
+    }
+
+    @media (min-width: 992px) {
+
+      /* Extra-large screens */
+      .logo {
+        flex: 0 0 25%;
+      }
+
+      .text {
+        flex: 1;
+      }
+    }
+
+    @media (min-width: 1200px) {
+
+      /* Cube screens */
+      .logo {
+        flex: 0 0 20%;
+      }
+
+      .text {
+        flex: 1;
+      }
+    }
+
+    .container1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .container1 h1 {
+      font-size: 38px;
+      /* Increased font size for h1 */
+      font-weight: bold;
+      /* Added bold font weight for h1 */
+      margin-bottom: 10px;
+    }
+
+    .container1 h2 {
+      font-size: 26px;
+      /* Adjusted font size for h2 */
+      font-weight: bold;
+      /* Added bold font weight for h2 */
+      margin-top: 0;
+      margin-bottom: 20px;
+      /* Increased margin bottom for spacing */
+    }
+
+    .container1 h3 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 576px) {
+
+      /* Medium screens */
+      .container1 h1 {
+        font-size: 32px;
+        /* Adjusted font size for medium screens */
+      }
+
+      .container1 h2 {
+        font-size: 20px;
+        /* Adjusted font size for medium screens */
+      }
+
+      .container1 h3 {
+        font-size: 10px;
+      }
+    }
+
+    @media (min-width: 768px) {
+
+      /* Large screens */
+      .container1 h1 {
+        font-size: 38px;
+        /* Adjusted font size for large screens */
+      }
+
+      .container1 h2 {
+        font-size: 26px;
+        /* Adjusted font size for large screens */
+      }
+
+      .container1 h3 {
+        font-size: 16px;
+      }
+    }
+
+    @media (min-width: 992px) {
+
+      /* Extra-large screens */
+      .container1 h1 {
+        font-size: 50px;
+        /* Adjusted font size for extra-large screens */
+      }
+
+      .container1 h2 {
+        font-size: 38px;
+        /* Adjusted font size for extra-large screens */
+      }
+
+      .container1 h3 {
+        font-size: 28px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+
+      /* Cube screens */
+      .container1 h1 {
+        font-size: 62px;
+        /* Adjusted font size for cube screens */
+      }
+
+      .container1 h2 {
+        font-size: 50px;
+        /* Adjusted font size for cube screens */
+      }
+
+      .container1 h3 {
+        font-size: 40px;
+      }
+    }
+
+    .container2 {
+      text-align: center;
+      margin-top: 50px;
+      /* Adjust the margin-top value as needed */
+    }
+
+    .arrow {
+      margin-right: 5px;
+      /* Adjust the margin-right value as needed */
+    }
+
+    @media (max-width: 576px) {
+      .arrow {
+        margin-right: 2px;
+        /* Adjust the margin-right value for smaller screens */
+      }
+    }
+
+    .container3 {
+      text-align: center;
+    }
+
+    .text {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 576px) {
+
+      /* Small screens */
+      .text {
+        font-size: 20px;
+      }
+    }
+
+    @media (min-width: 768px) {
+
+      /* Medium screens */
+      .text {
+        font-size: 22px;
+      }
+    }
+
+    @media (min-width: 992px) {
+
+      /* Large screens */
+      .text {
+        font-size: 24px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+
+      /* Extra-large screens */
+      .text {
+        font-size: 26px;
+      }
+    }
+
+    @media (min-width: 1600px) {
+
+      /* Cube screens */
+      .text {
+        font-size: 28px;
+      }
+    }
+
+    .a-tag {
+      color: lightseagreen;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" />
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="https://icar.org.in/files/icarlogo.png" alt="ICAR Logo" />
+      </div>
+      <div class="text">
+        <p>ICAR - INDIAN INSTITUTE OF OILSEEDS RESEARCH</p>
+        <p>Schedule for collecting the FPO farmers details</p>
+      </div>
+      <div class="logo">
+        <img src="https://icar-iior.org.in/sites/default/files/iior-logo-157x227.png" alt="IIOR Logo" />
+      </div>
+    </div>
+
+
+    <div class="container2">
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <a type="button" class="btn btn-success btn-lg btn-block" href="{{url_for('save_location')}}">
+            <span class="arrow">&larr;</span> Back
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <br />
+  </header>
+  <header>
+    <div class="container1">
+      <h1>TEAM</h1>
+      <br />
+      <h2>Indian Institute of Oilseeds Research, Hyderabad</h2>
+      <br />
+      <h3>Questionnaire Preparation and Designing</h3>
+    </div>
+  </header>
+
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap -m-4">
+        <div class="p-4 lg:w-1/3">
+          <div
+            class="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+            <br />
+            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              STAFF
+            </h2>
+            <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+              Dr. Chunduri Sarada
+            </h1>
+            <p class="leading-relaxed mb-3">
+              Principle Scientist Agril. Statistics
+            </p>
+            <br /><br />
+            <a href="mailto: c.sarada@icar.gov.in" target="_blank" id="mailbutton" class="btn btn-danger btn-lg">
+              &#128231; Email</a>
+          </div>
+        </div>
+        <div class="p-4 lg:w-1/3">
+          <div
+            class="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+            <br />
+            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              STAFF
+            </h2>
+            <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+              Dr. G.D. Satish Kumar
+            </h1>
+            <p class="leading-relaxed mb-3">
+              Principal Scientist Agril. Extension
+            </p>
+            <br /><br />
+            <a href="mailto: " target="_blank" id="mailbutton" class="btn btn-danger btn-lg">
+              &#128231; Email</a>
+          </div>
+        </div>
+        <div class="p-4 lg:w-1/3">
+          <div
+            class="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+            <br />
+            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              STAFF
+            </h2>
+            <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+              Dr. P. Padmavathi
+            </h1>
+            <p class="leading-relaxed mb-3">
+              Prinicpal Scientist Agronomy
+              <br />
+              I/c Farm-IIOR, ICRISAT
+            </p>
+            <br />
+            <br />
+            <a href="mailto: " target="_blank" id="mailbutton" class="btn btn-danger btn-lg">
+              &#128231; Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <header>
+    <div class="container1">
+      <h2>Koneru Lakshmaiah Education Foundation, Hyderabad</h2>
+      <br />
+      <h3>Application Development</h3>
+    </div>
+  </header>
+
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap -m-4">
+        <div class="p-4 lg:w-1/3">
+          <div
+            class="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+            <br />
+            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              STUDENT
+            </h2>
+            <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+              Narra Manas
+            </h1>
+            <p class="leading-relaxed mb-3">Back End Developer</p>
+            <br /><br />
+            <a href="mailto: 2110030085@klh.edu.in" target="_blank" id="mailbutton" class="btn btn-danger btn-lg">
+              &#128231; Email</a>
+          </div>
+        </div>
+        <div class="p-4 lg:w-1/3">
+          <div
+            class="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+            <br />
+            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              STUDENT
+            </h2>
+            <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+              K AMITH
+            </h1>
+            <p class="leading-relaxed mb-3">Front End Developer</p>
+            <br /><br />
+            <a href="mailto: 2110030372@klh.edu.in" target="_blank" id="mailbutton" class="btn btn-danger btn-lg">
+              &#128231; Email</a>
+          </div>
+        </div>
+        <div class="p-4 lg:w-1/3">
+          <div
+            class="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+            <br />
+            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              HOD(CSE)
+            </h2>
+            <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+              Dr. G. Rekha
+            </h1>
+            <p class="leading-relaxed mb-3">
+              Head Of the Department, CSE
+              <br />
+              <br />
+              <br />
+              <a href="mailto: gillala.rekha@klh.edu.in" target="_blank" id="mailbutton" class="btn btn-danger btn-lg">
+                &#128231; Email</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container3">
+      <p class="text">
+        Developed by <a href="https://www.icar-iior.org.in/" class="a-tag">ICAR-IIOR</a> in
+        collaboration with
+        <a href="https://www.kluniversity.in/" class="a-tag">KLEF, Hyderabad</a>
+      </p>
+    </div>
+  </footer>
+  <br><br><br>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+
+</html>
